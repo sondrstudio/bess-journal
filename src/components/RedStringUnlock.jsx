@@ -119,7 +119,7 @@ export function RedStringUnlock({ onUnlock }) {
           strokeWidth={isDragging ? 3 : 2} 
           strokeLinecap="round" 
           style={{ 
-             filter: 'drop-shadow(0 0 6px rgba(239, 68, 68, 0.5))',
+             filter: 'drop-shadow(0 0 6px rgba(244, 63, 94, 0.5))',
              transition: 'stroke-width 0.2s ease'
           }} 
         />

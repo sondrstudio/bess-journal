@@ -91,7 +91,7 @@ export function ArtbookTexture() {
 
       {/* Heavy Vignette Canvas Border */}
       <div className="absolute inset-0 w-full h-[100vh] z-30 pointer-events-none mix-blend-multiply opacity-60 fixed"
-           style={{ background: 'radial-gradient(ellipse at center, transparent 40%, rgba(61,40,23,0.7) 150%)' }} />
+           style={{ background: 'radial-gradient(ellipse at center, transparent 40%, rgba(69, 24, 44,0.7) 150%)' }} />
     </div>
   );
 }

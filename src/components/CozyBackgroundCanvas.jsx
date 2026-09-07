@@ -22,7 +22,7 @@ export function CozyBackgroundCanvas() {
         className="absolute top-0 right-0 w-[55vw] h-[55vh] rounded-full blur-3xl pointer-events-none transition-opacity duration-1000"
         style={{
           background:
-            'radial-gradient(circle at 80% 20%, rgba(255, 158, 0, 0.16) 0%, rgba(255, 110, 0, 0.08) 45%, transparent 70%)',
+            'radial-gradient(circle at 80% 20%, rgba(255, 158, 192, 0.16) 0%, rgba(255, 92, 138, 0.08) 45%, transparent 70%)',
           animation: 'candleFlicker 6s infinite ease-in-out',
         }}
       />
@@ -30,7 +30,7 @@ export function CozyBackgroundCanvas() {
         className="absolute bottom-0 left-0 w-[45vw] h-[45vh] rounded-full blur-3xl pointer-events-none transition-opacity duration-1000"
         style={{
           background:
-            'radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.12) 0%, rgba(183, 65, 14, 0.05) 50%, transparent 70%)',
+            'radial-gradient(circle at 20% 80%, rgba(224, 163, 188, 0.12) 0%, rgba(194, 24, 91, 0.05) 50%, transparent 70%)',
           animation: 'candleFlicker 8s infinite ease-in-out 2s',
         }}
       />

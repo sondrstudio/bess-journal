@@ -15,7 +15,7 @@ const ScratchOffSecret = ({ className = '' }) => {
     canvas.height = 150;
     
     // Fill with messy ink
-    ctx.fillStyle = "rgba(61, 40, 23, 0.95)";
+    ctx.fillStyle = "rgba(69, 24, 44, 0.95)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
     // Add "scratch me" text

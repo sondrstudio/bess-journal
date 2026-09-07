@@ -84,7 +84,7 @@ export function DailyEntryCard({ entry, onOpenPhoto }) {
       {/* Poem Section with Watercolor Wash & Breathing Aura */}
       <BreathingWrapper>
         <section className="relative bg-surface-2/40 rounded-[2rem] p-6 md:p-10 border border-accent/10 space-y-4 overflow-hidden">
-          <WatercolorWash color="gold" />
+          <WatercolorWash color="blush" />
           <h3 className="font-handwritten text-xl text-accent mb-2 flex items-center gap-2 relative z-10">
             <Heart className="w-4 h-4 fill-current" /> Today's Poem
           </h3>

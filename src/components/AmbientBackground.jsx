@@ -50,7 +50,7 @@ export function AmbientBackground() {
         ref={bgRef} 
         className="absolute inset-[-5%] w-[110%] h-[110%] opacity-20 pointer-events-none scale-105 will-change-transform"
         style={{
-          background: 'radial-gradient(circle at 50% 50%, rgba(183, 65, 14, 0.15) 0%, rgba(245, 243, 238, 0.05) 50%, transparent 100%)',
+          background: 'radial-gradient(circle at 50% 50%, rgba(194, 24, 91, 0.15) 0%, rgba(253, 247, 249, 0.05) 50%, transparent 100%)',
         }}
       />
       {/* Animated Light Leaks */}

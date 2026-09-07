@@ -299,9 +299,9 @@ export function FirecrackerRopeUnlock({ onUnlock }) {
         const glowRadius = isIgnitedRef.current ? 48 : 32;
         const grad = ctx.createRadialGradient(glowX, glowY, 0, glowX, glowY, glowRadius);
         grad.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
-        grad.addColorStop(0.25, 'rgba(255, 215, 0, 0.6)');
-        grad.addColorStop(0.6, 'rgba(255, 110, 0, 0.25)');
-        grad.addColorStop(1, 'rgba(255, 69, 0, 0)');
+        grad.addColorStop(0.25, 'rgba(255, 179, 206, 0.6)');
+        grad.addColorStop(0.6, 'rgba(255, 92, 138, 0.25)');
+        grad.addColorStop(1, 'rgba(255, 92, 138, 0)');
 
         ctx.fillStyle = grad;
         ctx.beginPath();
@@ -418,9 +418,9 @@ export function FirecrackerRopeUnlock({ onUnlock }) {
         }
 
         const smokeGrad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.size);
-        smokeGrad.addColorStop(0, `rgba(160, 130, 100, ${s.life * 0.22})`);
-        smokeGrad.addColorStop(0.6, `rgba(100, 80, 60, ${s.life * 0.09})`);
-        smokeGrad.addColorStop(1, 'rgba(100, 80, 60, 0)');
+        smokeGrad.addColorStop(0, `rgba(224, 163, 188, ${s.life * 0.22})`);
+        smokeGrad.addColorStop(0.6, `rgba(122, 51, 80, ${s.life * 0.09})`);
+        smokeGrad.addColorStop(1, 'rgba(122, 51, 80, 0)');
 
         ctx.fillStyle = smokeGrad;
         ctx.beginPath();

@@ -203,11 +203,11 @@
   background: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(183, 65, 14, 0.25);
+  background: rgba(194, 24, 91, 0.25);
   border-radius: 9999px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(183, 65, 14, 0.5);
+  background: rgba(194, 24, 91, 0.5);
 }
 
 

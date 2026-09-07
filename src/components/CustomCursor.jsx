@@ -57,7 +57,7 @@ export function CustomCursor() {
         setIsActive(true);
         gsap.to(cursor, {
           scale: text ? 4 : 2,
-          backgroundColor: text ? 'rgba(183, 65, 14, 0.9)' : 'rgba(61, 40, 23, 0.1)',
+          backgroundColor: text ? 'rgba(194, 24, 91, 0.9)' : 'rgba(69, 24, 44, 0.1)',
           mixBlendMode: text ? 'normal' : 'difference',
           duration: 0.2,
           ease: 'power2.out'
@@ -70,7 +70,7 @@ export function CustomCursor() {
         setIsActive(false);
         gsap.to(cursor, {
           scale: 1,
-          backgroundColor: 'rgba(183, 65, 14, 1)',
+          backgroundColor: 'rgba(194, 24, 91, 1)',
           mixBlendMode: 'normal',
           duration: 0.2,
           ease: 'power2.out'
