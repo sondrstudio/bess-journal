@@ -14,6 +14,9 @@ import { CozyBackgroundCanvas } from './components/CozyBackgroundCanvas';
 import { AudioSoundscape } from './components/AudioSoundscape';
 import { AuthorEditorModal } from './components/AuthorEditorModal';
 import { ReactiveBessTitle } from './components/ReactiveBessTitle';
+import { Prologue } from './components/Prologue';
+
+const PROLOGUE_SEEN_KEY = 'bess_prologue_seen';
 
 function StorySection({ children }) {
   return (
@@ -31,6 +34,26 @@ function MainApp() {
   const [ropeFading, setRopeFading] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
   const [activeTab, setActiveTab] = useState('today'); // 'today' | 'archive'
+
+  // The letter plays in full on a first visit only. She opens this daily for a
+  // month; after the first time it would stand between her and that day's
+  // entry, so it is remembered and replayed only on request.
+  const [showPrologue, setShowPrologue] = useState(() => {
+    try {
+      return !localStorage.getItem(PROLOGUE_SEEN_KEY);
+    } catch {
+      return true;
+    }
+  });
+
+  const handlePrologueComplete = React.useCallback(() => {
+    setShowPrologue(false);
+    try {
+      localStorage.setItem(PROLOGUE_SEEN_KEY, '1');
+    } catch {
+      /* private browsing — the letter simply plays again next time */
+    }
+  }, []);
 
   const handleIntroComplete = React.useCallback(() => {
     setShowIntro(false);
@@ -65,19 +88,31 @@ function MainApp() {
 
   return (
     <div className="min-h-screen bg-transparent relative selection:bg-accent selection:text-primary">
+      {showPrologue && <Prologue onComplete={handlePrologueComplete} />}
+
       <CustomCursor />
       <ArtbookTexture />
       <CozyBackgroundCanvas />
       <AudioSoundscape />
       <AuthorEditorModal />
       
+      {!showPrologue && (
+        <button
+          onClick={() => setShowPrologue(true)}
+          className="fixed bottom-5 right-5 z-40 font-handwritten text-lg text-ink/35 hover:text-accent transition-colors duration-500 pointer-events-auto"
+          title="Read the letter again"
+        >
+          ↺ the letter
+        </button>
+      )}
+
       {/* Hero Section */}
       <section className="h-[100dvh] flex flex-col items-start justify-center relative overflow-hidden text-background px-6 md:px-20">
         <div className="absolute inset-0 bg-ink/10 z-10 pointer-events-none mix-blend-multiply"></div>
 
         <InteractiveHeroArsenal isUnlocked={diaryUnlocked} showIntro={showIntro} />
         
-        {showIntro && <CinematicIntro onComplete={handleIntroComplete} />}
+        {!showPrologue && showIntro && <CinematicIntro onComplete={handleIntroComplete} />}
         
         <div className="relative z-20 space-y-8 max-w-2xl mt-12 pointer-events-none transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]">
           <div className="space-y-3 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform">
