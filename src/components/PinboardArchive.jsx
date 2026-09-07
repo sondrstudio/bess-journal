@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useTimeline } from '../context/TimelineContext';
 import { X, Share2, Heart, Send, Loader2, Edit2, Trash2, Eye, EyeOff } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -26,7 +26,16 @@ const ROTATIONS = [
 ];
 
 export function PinboardArchive() {
-  const { entries, saveHerReaction } = useTimeline();
+  const { entries, saveHerReaction, getUnlockStatus } = useTimeline();
+
+  // The archive shows only what has actually opened. Rendering every entry
+  // put a future note's title and the first lines of its body on the board,
+  // and made it tappable through to the full text — readable before its date.
+  // getUnlockStatus honours dev mode, so ?dev still previews the run.
+  const unlockedEntries = useMemo(
+    () => entries.filter((e) => getUnlockStatus(e).isUnlocked),
+    [entries, getUnlockStatus]
+  );
   const [selectedNoteId, setSelectedNoteId] = useState(null);
   const [exportingNote, setExportingNote] = useState(null);
   const [showSecret, setShowSecret] = useState(false);
@@ -57,7 +66,7 @@ export function PinboardArchive() {
   const [isSavingReaction, setIsSavingReaction] = useState(false);
 
   // Dynamic reactive selected note from context
-  const selectedNote = entries.find((e) => e.id === selectedNoteId) || null;
+  const selectedNote = unlockedEntries.find((e) => e.id === selectedNoteId) || null;
 
   useEffect(() => {
     if (selectedNote) {
@@ -132,9 +141,20 @@ export function PinboardArchive() {
           </p>
         </div>
 
+        {unlockedEntries.length === 0 && (
+          <div className="relative z-10 text-center py-16">
+            <p className="font-handwritten text-3xl md:text-4xl text-ink/70">
+              Nothing pinned here yet.
+            </p>
+            <p className="font-serif text-sm text-ink/50 mt-3">
+              Each note appears on the day it opens.
+            </p>
+          </div>
+        )}
+
         {/* Cluster of Post-it Notes */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 relative z-10 p-2">
-          {entries.map((entry, index) => {
+          {unlockedEntries.map((entry, index) => {
             const color = POST_IT_COLORS[index % POST_IT_COLORS.length];
             const rotation = ROTATIONS[index % ROTATIONS.length];
 
@@ -158,7 +178,7 @@ export function PinboardArchive() {
                 {/* Note Content Header */}
                 <div className="space-y-2">
                   <span className="font-mono text-xs uppercase tracking-widest text-ink font-bold block opacity-75">
-                    Day 0{entry.id}
+                    Day {String(entry.id).padStart(2, '0')}
                   </span>
                   <h3 className="font-serif text-xl md:text-2xl text-[#2A1620] font-bold leading-tight group-hover:text-accent transition-colors">
                     {entry.title}
