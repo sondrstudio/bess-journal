@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Bess's Journal</title>
+    <meta name="description" content="A daily thought journal written with love for Bess." />
+    <meta property="og:title" content="Bess's Journal" />
+    <meta property="og:description" content="A daily thought journal written with love for Bess." />
+    <!-- Preset C Fonts: Libre Baskerville, Satisfy, Merriweather -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Satisfy&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Global film grain. A pre-baked tile rather than an feTurbulence filter:
+         at 3% opacity the two are indistinguishable, but the filter cost a
+         full-viewport procedural rasterization on every resize. -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

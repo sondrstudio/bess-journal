@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 232, 228, 221;
+    --color-accent: 183, 65, 14;
+    --color-background: 245, 243, 238;
+    --color-ink: 61, 40, 23; 
+  }
+  
+  .dark {
+    --color-primary: 61, 40, 23;
+    --color-background: 26, 20, 18;
+    --color-ink: 248, 245, 240;
+    --color-accent: 183, 65, 14;
+  }
+
+  body {
+    @apply bg-background text-ink font-body selection:bg-accent selection:text-white antialiased transition-colors duration-700 ease-in-out;
+  }
+}
+
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url('/textures/grain.webp');
+  background-repeat: repeat;
+}
+
+@keyframes dashFlow {
+  0% {
+    stroke-dasharray: 800;
+    stroke-dashoffset: 800;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: 800;
+    stroke-dashoffset: -800;
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 30s linear infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.8) rotate(var(--rot, 0deg)); }
+  to   { opacity: 1; transform: scale(1)   rotate(var(--rot, 0deg)); }
+}
+
+.magnetic-btn {
+  @apply relative overflow-hidden transition-transform duration-[400ms] hover:scale-[1.03] hover:-translate-y-[1px];
+  /* Magnetic feel easing: cubic-bezier(0.25, 0.46, 0.45, 0.94) applied via JS usually, but this is a fallback CSS */
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes flapLeft {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0.2); }
+}
+
+@keyframes flapRight {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0.2); }
+}
+
+@keyframes floatUp {
+  0% { opacity: 0; transform: translateY(40px) scale(0.6); }
+  25% { opacity: 1; transform: translateY(-20px) scale(1.1); }
+  75% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-150px) scale(1.3); }
+}
+
+@keyframes fadeBlurIn {
+  0% {
+    opacity: 0;
+    filter: blur(18px);
+    transform: translateY(20px) scale(0.94);
+  }
+  50% {
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-blur-in {
+  animation: fadeBlurIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeBlurOut {
+  0% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(14px);
+    transform: translateY(14px) scale(0.95);
+  }
+}
+
+.animate-fade-blur-out {
+  animation: fadeBlurOut 0.75s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes flapFast {
+  0% { transform: scaleX(1); }
+  100% { transform: scaleX(0.15); }
+}
+
+@keyframes flapSlow {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.3); }
+}
+
+@keyframes fireflyOrbit {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  25% { transform: translate(25px, -18px) scale(1.2); opacity: 0.9; }
+  50% { transform: translate(-15px, 25px) scale(0.8); opacity: 0.6; }
+  75% { transform: translate(-30px, -10px) scale(1.3); opacity: 1; }
+  100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+}
+
+@keyframes wetInkSheen {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes inkRipple {
+  0% { width: 0px; height: 0px; opacity: 0.6; }
+  100% { width: 160px; height: 160px; opacity: 0; }
+}
+
+@keyframes dashGrow {
+  0% { stroke-dashoffset: 350; opacity: 0.4; }
+  50% { stroke-dashoffset: 0; opacity: 0.85; }
+  100% { stroke-dashoffset: -350; opacity: 0.4; }
+}
+
+@keyframes leafSway {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(9deg) scale(1.06); }
+}
+
+@keyframes vineBreeze {
+  0%, 100% { transform: rotate(0deg) scaleX(1); }
+  50% { transform: rotate(1.8deg) scaleX(1.03); }
+}
+
+@keyframes candleFlicker {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  25% { opacity: 1; transform: scale(1.04); }
+  50% { opacity: 0.75; transform: scale(0.97); }
+  75% { opacity: 0.95; transform: scale(1.02); }
+}
+
+/* Elegant custom scrollbar for modal windows */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(183, 65, 14, 0.25);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(183, 65, 14, 0.5);
+}
+
+
