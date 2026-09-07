@@ -34,8 +34,12 @@ empty string — so a key like `$2a$10$SGQ1o...` silently loses its `$SGQ1o...`
 segment and every request 401s. Quoting the value does not help; only
 backslashes do.
 
-`.env` is gitignored. On Netlify, set the same two variables under
-**Site settings → Environment variables** so they are present at build time.
+`.env` is gitignored. On Vercel, set the same two variables under
+**Project → Settings → Environment variables** so they are present at build
+time. Paste the key there **without** the backslashes — the escaping below is a
+`.env` file-format quirk, not part of the key. (`netlify.toml` and
+`public/_headers` are left over from the original build and are inert on
+Vercel; `vercel.json` carries the equivalent cache policy.)
 
 Without credentials the site still runs: it falls back to the bundled
 `src/data/dailyEntries.json` plus `localStorage`, and in-browser edits stay local
