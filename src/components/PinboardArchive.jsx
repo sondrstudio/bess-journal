@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { useTimeline } from '../context/TimelineContext';
 import { X, Share2, Heart, Send, Loader2, Edit2, Trash2, Eye, EyeOff } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -223,7 +224,14 @@ export function PinboardArchive() {
       </div>
 
       {/* Lightbox Modal for Selected Archived Note */}
-      {selectedNote && (
+      {/* Portalled to the body on purpose. The archive renders inside a
+          wrapper carrying animate-fade-blur-in, which sets filter and transform
+          with fill-mode forwards — so the final blur(0px)/scale(1) sticks, and
+          a non-none filter or transform creates a stacking context that never
+          goes away. That trapped this overlay's z-index inside the wrapper and
+          let the page footer paint over it. A portal lifts it out of every
+          ancestor stacking context, so no future wrapper can trap it again. */}
+      {selectedNote && createPortal((
         <div
           className="fixed inset-0 z-[9999] bg-ink/70 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 md:p-10 animate-fade-blur-in overflow-hidden select-none overscroll-contain"
           onClick={() => setSelectedNoteId(null)}
@@ -402,7 +410,7 @@ export function PinboardArchive() {
             </div>
           </div>
         </div>
-      )}
+      ), document.body)}
 
       {/* Share / Export Modal for Archived Note */}
       {exportingNote && (
