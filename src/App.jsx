@@ -15,6 +15,7 @@ import { AudioSoundscape } from './components/AudioSoundscape';
 import { AuthorEditorModal } from './components/AuthorEditorModal';
 import { ReactiveBessTitle } from './components/ReactiveBessTitle';
 import { Prologue } from './components/Prologue';
+import { StartGate } from './components/StartGate';
 
 const PROLOGUE_UNTIL_KEY = 'bess_prologue_until';
 
@@ -63,6 +64,10 @@ function MainApp() {
   // The replay control brings it back at any point after that.
   const [showPrologue, setShowPrologue] = useState(prologueStillDue);
 
+  // The doorway only stands in front of the letter when the letter is due. A
+  // deliberate replay goes straight to the first stanza — she already chose it.
+  const [showStart, setShowStart] = useState(prologueStillDue);
+
   const handlePrologueComplete = React.useCallback(() => {
     setShowPrologue(false);
     try {
@@ -108,7 +113,9 @@ function MainApp() {
 
   return (
     <div className="min-h-screen bg-transparent relative selection:bg-accent selection:text-primary">
-      {showPrologue && <Prologue onComplete={handlePrologueComplete} />}
+      {showStart && <StartGate onStart={() => setShowStart(false)} />}
+
+      {!showStart && showPrologue && <Prologue onComplete={handlePrologueComplete} />}
 
       <CustomCursor />
       <ArtbookTexture />
@@ -116,7 +123,7 @@ function MainApp() {
       <AudioSoundscape />
       <AuthorEditorModal />
       
-      {!showPrologue && (
+      {!showStart && !showPrologue && (
         <button
           onClick={() => setShowPrologue(true)}
           className="fixed bottom-5 right-5 z-40 font-handwritten text-lg text-ink/35 hover:text-accent transition-colors duration-500 pointer-events-auto"
@@ -132,7 +139,7 @@ function MainApp() {
 
         <InteractiveHeroArsenal isUnlocked={diaryUnlocked} showIntro={showIntro} />
         
-        {!showPrologue && showIntro && <CinematicIntro onComplete={handleIntroComplete} />}
+        {!showStart && !showPrologue && showIntro && <CinematicIntro onComplete={handleIntroComplete} />}
         
         <div className="relative z-20 space-y-8 max-w-2xl mt-12 pointer-events-none transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]">
           <div className="space-y-3 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform">
