@@ -52,9 +52,12 @@ export function PinboardArchive() {
       if (scrollBarWidth > 0) {
         document.body.style.paddingRight = `${scrollBarWidth}px`;
       }
+      const originalRootOverflow = document.documentElement.style.overflow;
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
       return () => {
         document.body.style.overflow = originalOverflow;
+        document.documentElement.style.overflow = originalRootOverflow;
         document.body.style.paddingRight = originalPaddingRight;
       };
     }
@@ -227,6 +230,7 @@ export function PinboardArchive() {
           <div
             ref={modalScrollRef}
             tabIndex={0}
+            data-lenis-prevent
             className="relative bg-surface max-w-2xl w-full max-h-[85vh] overflow-y-auto overscroll-contain custom-scrollbar p-6 sm:p-8 md:p-12 rounded-[2.5rem] border border-ink/15 shadow-2xl space-y-6 animate-fade-blur-in my-auto select-auto focus:outline-none"
             onClick={(e) => e.stopPropagation()}
           >

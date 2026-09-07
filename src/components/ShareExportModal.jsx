@@ -282,7 +282,7 @@ export function ShareExportModal({ isOpen, onClose, entry }) {
         )}
 
         {/* SCROLLABLE MAIN CONTENT BODY */}
-        <div className="overflow-y-auto flex-1 min-h-0 space-y-4 px-1 py-1 my-1">
+        <div data-lenis-prevent className="overflow-y-auto flex-1 min-h-0 space-y-4 px-1 py-1 my-1">
           {/* Theme Selector */}
           <div className="space-y-2 px-0.5">
             <label className="font-serif text-[11px] font-bold uppercase tracking-wider text-ink/60 flex items-center gap-1.5 px-0.5">
@@ -312,7 +312,7 @@ export function ShareExportModal({ isOpen, onClose, entry }) {
 
           {/* PREVIEW CANVAS CONTAINER (Warm paper mount padding) */}
           <div className="my-1">
-            <div className="overflow-y-auto max-h-[46vh] rounded-3xl border border-[#9E4A6B]/15 shadow-inner bg-[#F7E4EC]/40 p-6 sm:p-8 flex items-center justify-center">
+            <div data-lenis-prevent className="overflow-y-auto max-h-[46vh] rounded-3xl border border-[#9E4A6B]/15 shadow-inner bg-[#F7E4EC]/40 p-6 sm:p-8 flex items-center justify-center">
               
               {/* THE EXPORTABLE CARD */}
               <div

@@ -16,9 +16,14 @@ export function AuthorEditorModal() {
       if (scrollBarWidth > 0) {
         document.body.style.paddingRight = `${scrollBarWidth}px`;
       }
+      // Lenis scrolls the root element, so locking the body alone left the
+      // page free to move behind the panel. Lock both.
+      const originalRootOverflow = document.documentElement.style.overflow;
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
       return () => {
         document.body.style.overflow = originalOverflow;
+        document.documentElement.style.overflow = originalRootOverflow;
         document.body.style.paddingRight = originalPaddingRight;
       };
     }
@@ -186,9 +191,14 @@ export function AuthorEditorModal() {
         }
       }}
     >
+      {/* data-lenis-prevent: Lenis drives scrolling on documentElement, so
+          locking body overflow never stopped it and the page kept moving
+          under the open panel. This tells Lenis to leave events raised
+          inside alone, letting the panel scroll natively. */}
       <div
         ref={editorScrollRef}
         tabIndex={0}
+        data-lenis-prevent
         className="relative bg-surface max-w-2xl w-full p-6 sm:p-8 md:p-12 rounded-[2.5rem] border border-ink/20 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto overscroll-contain custom-scrollbar my-auto select-auto focus:outline-none"
         onClick={(e) => e.stopPropagation()}
       >
