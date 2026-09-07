@@ -34,7 +34,7 @@ export function LiveAmbientCanvas({ children }) {
   const themeIcons = {
     dawn: <Sunrise className="w-4 h-4 text-[#E0A3BC]" />,
     day: <Sun className="w-4 h-4 text-[#E0A3BC]" />,
-    sunset: <Sunset className="w-4 h-4 text-accent" />,
+    sunset: <Sunset className="w-4 h-4 text-[#C2185B]" />,
     night: <Moon className="w-4 h-4 text-[#FFB3CE]" />,
   };
 

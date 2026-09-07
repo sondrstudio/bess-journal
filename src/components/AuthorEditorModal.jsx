@@ -349,7 +349,7 @@ export function AuthorEditorModal() {
                         <Trash2 className="w-3.5 h-3.5" /> Delete Whisper
                       </button>
                     </div>
-                    <p className="font-handwritten text-xl text-ink/90 italic pt-1">
+                    <p className="font-handwritten text-xl text-[#45182C]/90 italic pt-1">
                       "{active.herReaction}"
                     </p>
                   </div>

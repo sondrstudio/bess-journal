@@ -135,21 +135,27 @@ export function PinboardArchive() {
 
   return (
     <section className="py-16 px-4 md:px-12 max-w-6xl mx-auto my-12">
-      {/* Pin Board Surface */}
+      {/* Pin Board Surface.
+
+          The board and its notes are fixed paper in both modes — a cork board
+          does not invert. So the ink on them is fixed too: a token here would
+          flip to near-white in dark mode and leave light text on a light note.
+          The detail modal below is a different case; it sits on bg-surface,
+          which does flip, so it keeps the tokens. */}
       <div className="relative bg-[#F7E4EC] border-4 border-[#9E4A6B]/40 rounded-[3rem] p-6 md:p-14 shadow-2xl overflow-hidden">
         {/* Pin Board Header */}
         <div className="text-center space-y-3 mb-12 relative z-10">
-          <p className="font-handwritten text-2xl md:text-3xl text-ink/80">
+          <p className="font-handwritten text-2xl md:text-3xl text-[#45182C]/80">
             A cluster of thoughts, pinned in time. Tap any note to read and whisper back.
           </p>
         </div>
 
         {unlockedEntries.length === 0 && (
           <div className="relative z-10 text-center py-16">
-            <p className="font-handwritten text-3xl md:text-4xl text-ink/70">
+            <p className="font-handwritten text-3xl md:text-4xl text-[#45182C]/70">
               Nothing pinned here yet.
             </p>
-            <p className="font-serif text-sm text-ink/50 mt-3">
+            <p className="font-serif text-sm text-[#45182C]/50 mt-3">
               Each note appears on the day it opens.
             </p>
           </div>
@@ -169,7 +175,7 @@ export function PinboardArchive() {
               >
                 {/* Washi Tape or Push Pin Accent */}
                 {index % 2 === 0 ? (
-                  <div className={`absolute top-[-12px] left-1/2 -translate-x-1/2 w-20 h-6 ${color.tape} backdrop-blur-sm rotate-[-1deg] border border-ink/40 shadow-sm z-20 pointer-events-none`} />
+                  <div className={`absolute top-[-12px] left-1/2 -translate-x-1/2 w-20 h-6 ${color.tape} backdrop-blur-sm rotate-[-1deg] border border-[#45182C]/40 shadow-sm z-20 pointer-events-none`} />
                 ) : (
                   <div className="absolute top-2 right-4 z-20 pointer-events-none">
                     <svg viewBox="0 0 24 24" className="w-6 h-6 drop-shadow-sm" fill={color.pin}>
@@ -180,21 +186,21 @@ export function PinboardArchive() {
 
                 {/* Note Content Header */}
                 <div className="space-y-2">
-                  <span className="font-mono text-xs uppercase tracking-widest text-ink font-bold block opacity-75">
+                  <span className="font-mono text-xs uppercase tracking-widest text-[#45182C] font-bold block opacity-75">
                     Day {String(entry.id).padStart(2, '0')}
                   </span>
-                  <h3 className="font-serif text-xl md:text-2xl text-[#2A1620] font-bold leading-tight group-hover:text-accent transition-colors">
+                  <h3 className="font-serif text-xl md:text-2xl text-[#2A1620] font-bold leading-tight group-hover:text-[#C2185B] transition-colors">
                     {entry.title}
                   </h3>
                 </div>
 
                 {/* Note Snippet */}
-                <p className="font-handwritten text-xl md:text-2xl text-ink leading-snug line-clamp-3 mt-4">
+                <p className="font-handwritten text-xl md:text-2xl text-[#45182C] leading-snug line-clamp-3 mt-4">
                   "{entry.thought}"
                 </p>
 
                 {/* Footer Tag & Reaction Status */}
-                <div className="mt-4 pt-3 border-t border-ink/15 flex items-center justify-between text-xs font-serif text-ink">
+                <div className="mt-4 pt-3 border-t border-[#45182C]/15 flex items-center justify-between text-xs font-serif text-[#45182C]">
                   <div className="flex items-center gap-2">
                     <span>{entry.themeTag || 'Thought'}</span>
                     {entry.herReaction && (
@@ -206,7 +212,7 @@ export function PinboardArchive() {
                       </span>
                     )}
                   </div>
-                  <span className="font-handwritten text-lg text-accent group-hover:translate-x-1 transition-transform">
+                  <span className="font-handwritten text-lg text-[#C2185B] group-hover:translate-x-1 transition-transform">
                     Read note →
                   </span>
                 </div>
