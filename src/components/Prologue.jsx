@@ -62,8 +62,7 @@ const prefersReducedMotion = () =>
 /* Ambient butterflies — a slow wander rather than the intro's flood, so they
    read as company while she reads. They surge rightward on the last stanza to
    pre-echo the flood that CinematicIntro opens with. */
-function PrologueButterflies({ surge }) {
-  const containerRef = useRef(null);
+function PrologueButterflies({ surge, containerRef }) {
   const surgeRef = useRef(surge);
 
   useEffect(() => {
@@ -143,6 +142,8 @@ export function Prologue({ onComplete }) {
 
   const stanzaRef = useRef(null);
   const overlayRef = useRef(null);
+  const mothsRef = useRef(null);
+  const dotsRef = useRef(null);
   const busyRef = useRef(false);
   const indexRef = useRef(0);
 
@@ -219,19 +220,39 @@ export function Prologue({ onComplete }) {
       onComplete: () => onCompleteRef.current && onCompleteRef.current(),
     });
 
-    // The text leaves first and the paper holds, so what remains on screen is
-    // the same ground CinematicIntro paints — no flash between the two.
-    tl.to(stanzaRef.current, {
-      opacity: 0,
-      filter: reduced ? 'blur(0px)' : 'blur(16px)',
-      y: reduced ? 0 : -22,
-      scale: reduced ? 1 : 0.96,
-      duration: reduced ? 0.3 : 1.9,
-      ease: 'power2.inOut',
-    });
+    // Everything on the paper leaves under its own power before the handoff —
+    // nothing is still on screen at the moment this unmounts. The paper itself
+    // never fades: it is the same ground CinematicIntro paints, so holding it
+    // opaque is what keeps the two reading as one continuous shot.
+    tl.to(
+      stanzaRef.current,
+      {
+        opacity: 0,
+        filter: reduced ? 'blur(0px)' : 'blur(16px)',
+        y: reduced ? 0 : -22,
+        scale: reduced ? 1 : 0.96,
+        duration: reduced ? 0.3 : 1.9,
+        ease: 'power2.inOut',
+      },
+      0
+    );
 
-    // Let the butterflies carry the moment alone for a beat before handing over.
-    tl.to({}, { duration: reduced ? 0.1 : 0.7 });
+    tl.to(
+      dotsRef.current,
+      { opacity: 0, duration: reduced ? 0.25 : 1.1, ease: 'power2.out' },
+      0
+    );
+
+    // The butterflies are already drifting rightward on the surge; they thin
+    // out as they go rather than being cut off mid-flight.
+    tl.to(
+      mothsRef.current,
+      { opacity: 0, duration: reduced ? 0.3 : 2.3, ease: 'power1.inOut' },
+      reduced ? 0.1 : 0.55
+    );
+
+    // A beat of bare paper, so the title sequence starts from stillness.
+    tl.to({}, { duration: reduced ? 0.1 : 0.4 });
   }, []);
 
   const advance = useCallback(() => {
@@ -316,7 +337,7 @@ export function Prologue({ onComplete }) {
       {/* Same paper as the title sequence, so the two read as one shot. */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-overlay bg-[url('/textures/rice-paper.webp')]" />
 
-      <PrologueButterflies surge={surge} />
+      <PrologueButterflies surge={surge} containerRef={mothsRef} />
 
       <div
         ref={stanzaRef}
@@ -340,7 +361,10 @@ export function Prologue({ onComplete }) {
       </div>
 
       {/* Progress — six ink marks, one per stanza. */}
-      <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2.5">
+      <div
+        ref={dotsRef}
+        className="absolute bottom-14 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2.5"
+      >
         {STANZAS.map((_, i) => (
           <span
             key={i}

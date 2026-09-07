@@ -16,7 +16,30 @@ import { AuthorEditorModal } from './components/AuthorEditorModal';
 import { ReactiveBessTitle } from './components/ReactiveBessTitle';
 import { Prologue } from './components/Prologue';
 
-const PROLOGUE_SEEN_KEY = 'bess_prologue_seen';
+const PROLOGUE_UNTIL_KEY = 'bess_prologue_until';
+
+// The letter keeps playing on every visit until noon the day after she first
+// opens it, rather than only on a first view. The deadline is stamped once, on
+// that first view, and never refreshed — otherwise each visit would push it
+// forward and the letter would never stand down.
+function prologueDeadline(from = new Date()) {
+  const d = new Date(from);
+  d.setDate(d.getDate() + 1);
+  d.setHours(12, 0, 0, 0);
+  return d.getTime();
+}
+
+function prologueStillDue() {
+  try {
+    const raw = localStorage.getItem(PROLOGUE_UNTIL_KEY);
+    if (!raw) return true;
+    const until = Number(raw);
+    if (!Number.isFinite(until)) return true;
+    return Date.now() < until;
+  } catch {
+    return true;
+  }
+}
 
 function StorySection({ children }) {
   return (
@@ -35,21 +58,18 @@ function MainApp() {
   const [showIntro, setShowIntro] = useState(true);
   const [activeTab, setActiveTab] = useState('today'); // 'today' | 'archive'
 
-  // The letter plays in full on a first visit only. She opens this daily for a
-  // month; after the first time it would stand between her and that day's
-  // entry, so it is remembered and replayed only on request.
-  const [showPrologue, setShowPrologue] = useState(() => {
-    try {
-      return !localStorage.getItem(PROLOGUE_SEEN_KEY);
-    } catch {
-      return true;
-    }
-  });
+  // See prologueDeadline: the letter greets her on every visit until noon
+  // tomorrow, then stands aside so it is not between her and that day's entry.
+  // The replay control brings it back at any point after that.
+  const [showPrologue, setShowPrologue] = useState(prologueStillDue);
 
   const handlePrologueComplete = React.useCallback(() => {
     setShowPrologue(false);
     try {
-      localStorage.setItem(PROLOGUE_SEEN_KEY, '1');
+      // Stamped only if absent, so a replay never extends the window.
+      if (!localStorage.getItem(PROLOGUE_UNTIL_KEY)) {
+        localStorage.setItem(PROLOGUE_UNTIL_KEY, String(prologueDeadline()));
+      }
     } catch {
       /* private browsing — the letter simply plays again next time */
     }

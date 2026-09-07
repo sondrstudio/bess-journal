@@ -63,6 +63,7 @@ export const CinematicIntro = ({ onComplete }) => {
   const overlayRef = useRef(null);
   const wordsGroupRef = useRef(null);
   const thoughtWordsRef = useRef(null);
+  const gridRef = useRef(null);
   const bessRef = useRef(null);
   const journalRef = useRef(null);
 
@@ -105,6 +106,28 @@ export const CinematicIntro = ({ onComplete }) => {
           { opacity: 0, scale: 0.95, filter: "blur(14px)", y: 15 },
           { opacity: 1, scale: 1, filter: "blur(0px)", y: 0, duration: 2.4, delay: 0.3, ease: "power2.out" }
         );
+      }
+
+      // The two share a grid cell, so the cell is sized to the wider of them —
+      // "a daily thought". Left alone, "Bess's" ends up centred in a cell as wide
+      // as the phrase it replaced, stranding "journal." far to its right. Once
+      // the thought is on its way out, collapse the cell to the width of the
+      // name so "journal." slides in beside it.
+      // offsetWidth, not getBoundingClientRect: the tween above has already put
+      // scale 0.95 on the name, and a bounding rect would report that scaled
+      // width, collapsing the cell ~5% too far.
+      if (gridRef.current && bessRef.current) {
+        const from = gridRef.current.offsetWidth;
+        const to = bessRef.current.offsetWidth;
+        if (from && to && Math.abs(from - to) > 1) {
+          gsap.set(gridRef.current, { width: from });
+          gsap.to(gridRef.current, {
+            width: to,
+            duration: 1.7,
+            delay: 0.95,
+            ease: 'power2.inOut',
+          });
+        }
       }
 
       const timer = setTimeout(() => {
@@ -193,7 +216,10 @@ export const CinematicIntro = ({ onComplete }) => {
         <div className="flex flex-wrap items-center justify-center gap-4">
           
           {/* Shared Grid Cell for "a daily thought" and "Bess" so they never overlap */}
-          <div className="inline-grid grid-cols-1 grid-rows-1 items-center justify-items-center">
+          <div
+            ref={gridRef}
+            className="inline-grid grid-cols-1 grid-rows-1 items-center justify-items-center"
+          >
             {/* "a daily thought" */}
             <div 
               ref={thoughtWordsRef} 
