@@ -42,15 +42,15 @@ export function CozyBackgroundCanvas() {
         onMouseEnter={() => setIsHoveringStain(true)}
         onMouseLeave={() => setIsHoveringStain(false)}
         className={`absolute top-12 left-6 md:left-16 pointer-events-auto cursor-pointer transition-all duration-700 opacity-25 mix-blend-multiply ${
-          isHoveringStain ? 'opacity-60 scale-105 filter drop-shadow-[0_0_12px_#D4AF37]' : 'scale-100'
+          isHoveringStain ? 'opacity-60 scale-105 filter drop-shadow-[0_0_12px_#E0A3BC]' : 'scale-100'
         }`}
       >
-        <svg width="140" height="140" viewBox="0 0 200 200" fill="none" stroke="#5D4037" strokeLinecap="round">
+        <svg width="140" height="140" viewBox="0 0 200 200" fill="none" stroke="#7A3350" strokeLinecap="round">
           <circle cx="100" cy="100" r="75" strokeWidth="5" opacity="0.85" />
           <circle cx="103" cy="97" r="75" strokeWidth="2.5" opacity="0.45" />
           <path d="M 25 100 A 75 75 0 0 1 175 100" strokeWidth="8" opacity="0.3" filter="blur(2px)" />
-          <circle cx="38" cy="155" r="3.5" fill="#5D4037" />
-          <circle cx="155" cy="145" r="2" fill="#5D4037" />
+          <circle cx="38" cy="155" r="3.5" fill="#7A3350" />
+          <circle cx="155" cy="145" r="2" fill="#7A3350" />
         </svg>
       </div>
 
@@ -59,19 +59,19 @@ export function CozyBackgroundCanvas() {
         onMouseEnter={() => setIsHoveringRose(true)}
         onMouseLeave={() => setIsHoveringRose(false)}
         className={`absolute bottom-20 right-8 md:right-20 pointer-events-auto cursor-pointer transition-all duration-700 opacity-30 mix-blend-multiply ${
-          isHoveringRose ? 'opacity-70 scale-110 filter drop-shadow-[0_0_16px_#B7410E]' : 'scale-100'
+          isHoveringRose ? 'opacity-70 scale-110 filter drop-shadow-[0_0_16px_#C2185B]' : 'scale-100'
         }`}
       >
-        <svg width="120" height="150" viewBox="0 0 100 130" fill="none" stroke="#B7410E" strokeWidth="1.5">
+        <svg width="120" height="150" viewBox="0 0 100 130" fill="none" stroke="#C2185B" strokeWidth="1.5">
           {/* Rose Stem */}
           <path d="M 50 120 Q 45 80 50 40" strokeWidth="2" strokeLinecap="round" opacity="0.7" />
           {/* Stem Leaves */}
-          <path d="M 48 90 C 30 80 25 95 48 100 Z" fill="#B7410E" fillOpacity="0.2" />
-          <path d="M 50 70 C 68 60 72 75 50 80 Z" fill="#B7410E" fillOpacity="0.2" />
+          <path d="M 48 90 C 30 80 25 95 48 100 Z" fill="#C2185B" fillOpacity="0.2" />
+          <path d="M 50 70 C 68 60 72 75 50 80 Z" fill="#C2185B" fillOpacity="0.2" />
           {/* Petal Bloom Layers */}
-          <path d="M 50 40 C 30 20 30 -5 50 15 C 70 -5 70 20 50 40 Z" fill="#B7410E" fillOpacity="0.3" />
-          <path d="M 50 35 C 38 22 38 5 50 20 C 62 5 62 22 50 35 Z" fill="#B7410E" fillOpacity="0.4" />
-          <circle cx="50" cy="20" r="4" fill="#B7410E" fillOpacity="0.6" />
+          <path d="M 50 40 C 30 20 30 -5 50 15 C 70 -5 70 20 50 40 Z" fill="#C2185B" fillOpacity="0.3" />
+          <path d="M 50 35 C 38 22 38 5 50 20 C 62 5 62 22 50 35 Z" fill="#C2185B" fillOpacity="0.4" />
+          <circle cx="50" cy="20" r="4" fill="#C2185B" fillOpacity="0.6" />
         </svg>
       </div>
 
@@ -82,7 +82,7 @@ export function CozyBackgroundCanvas() {
           <path
             d="M 80 120 L 130 80 L 180 120 L 160 180 L 130 220 L 100 180 Z M 130 80 L 130 220"
             fill="none"
-            stroke="#D4AF37"
+            stroke="#E0A3BC"
             strokeWidth="1.2"
             strokeDasharray="4 4"
             className="animate-[pulse_4s_infinite_ease-in-out]"
@@ -98,10 +98,10 @@ export function CozyBackgroundCanvas() {
                 cx={star.x}
                 cy={star.y}
                 r="4"
-                fill="#D4AF37"
+                fill="#E0A3BC"
                 className="animate-[ping_3s_infinite_ease-in-out]"
               />
-              <circle cx={star.x} cy={star.y} r="2.5" fill="#3D2817" />
+              <circle cx={star.x} cy={star.y} r="2.5" fill="#45182C" />
             </g>
           ))}
         </svg>

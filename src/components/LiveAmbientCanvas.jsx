@@ -23,17 +23,19 @@ export function LiveAmbientCanvas({ children }) {
   const activeTheme = getEffectiveTheme();
 
   const themeStyles = {
-    dawn: 'bg-[#FAF0E6] text-[#4A2E2B]',
-    day: 'bg-[#F5F3EE] text-[#3D2817]',
-    sunset: 'bg-[#FDF6ED] text-[#3D2817]',
-    night: 'bg-[#181412] text-[#E8E4DD]',
+    dawn: 'bg-[#FDEEF2] text-[#5C2340]',
+    day: 'bg-background text-ink',
+    // Fixed light text: the chip's own background is fixed dark, so a token
+    // here would go dark-on-dark once the site is in dark mode.
+    sunset: 'bg-[#FCE4EC] text-[#5C2340]',
+    night: 'bg-[#1A0E14] text-[#FBEAF1]',
   };
 
   const themeIcons = {
-    dawn: <Sunrise className="w-4 h-4 text-[#E5989B]" />,
-    day: <Sun className="w-4 h-4 text-[#D4AF37]" />,
-    sunset: <Sunset className="w-4 h-4 text-[#B7410E]" />,
-    night: <Moon className="w-4 h-4 text-[#FFD700]" />,
+    dawn: <Sunrise className="w-4 h-4 text-[#E0A3BC]" />,
+    day: <Sun className="w-4 h-4 text-[#E0A3BC]" />,
+    sunset: <Sunset className="w-4 h-4 text-accent" />,
+    night: <Moon className="w-4 h-4 text-[#FFB3CE]" />,
   };
 
   const cycleTheme = () => {
@@ -48,7 +50,7 @@ export function LiveAmbientCanvas({ children }) {
       <div className="fixed bottom-6 right-6 z-40">
         <button
           onClick={cycleTheme}
-          className="px-3.5 py-2 rounded-full bg-[#FAF8F5]/80 dark:bg-[#2A221E]/80 border border-[#B7410E]/20 backdrop-blur-md shadow-lg font-serif text-xs flex items-center gap-2 hover:scale-105 transition-all text-[#3D2817] dark:text-[#E8E4DD]"
+          className="px-3.5 py-2 rounded-full bg-surface/80 border border-accent/20 backdrop-blur-md shadow-lg font-serif text-xs flex items-center gap-2 hover:scale-105 transition-all text-ink"
           title="Click to change atmosphere mood"
         >
           {themeIcons[activeTheme]}

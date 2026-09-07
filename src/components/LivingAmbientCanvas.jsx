@@ -46,7 +46,7 @@ export function LivingAmbientCanvas() {
         this.rotSpeed = (Math.random() - 0.5) * 0.03;
         this.oscFreq = Math.random() * 0.02 + 0.01;
         this.alpha = Math.random() * 0.35 + 0.15;
-        this.color = Math.random() > 0.4 ? '#B7410E' : Math.random() > 0.5 ? '#D4AF37' : '#5C3A21';
+        this.color = Math.random() > 0.4 ? '#C2185B' : Math.random() > 0.5 ? '#E0A3BC' : '#7A3350';
         this.type = Math.random() > 0.3 ? 'petal' : 'dust';
       }
 
@@ -105,7 +105,7 @@ export function LivingAmbientCanvas() {
         this.size = Math.random() * 12 + 10;
         this.wingAngle = 0;
         this.wingSpeed = Math.random() * 0.15 + 0.1;
-        this.color = Math.random() > 0.5 ? '#B7410E' : '#3D2817';
+        this.color = Math.random() > 0.5 ? '#C2185B' : '#45182C';
         this.targetAngle = Math.random() * Math.PI * 2;
       }
 
@@ -193,7 +193,7 @@ export function LivingAmbientCanvas() {
         this.vy = (Math.random() - 0.5) * 1.2 - 0.4;
         this.life = 1.0;
         this.decay = Math.random() * 0.05 + 0.03;
-        this.color = Math.random() > 0.5 ? '#FFD700' : '#B7410E';
+        this.color = Math.random() > 0.5 ? '#FFB3CE' : '#C2185B';
       }
 
       update() {

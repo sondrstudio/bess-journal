@@ -46,7 +46,7 @@ export function AudioSoundscape() {
     <div className="fixed bottom-6 left-6 z-50 flex items-center gap-3 select-none">
       <button
         onClick={toggleSound}
-        className="px-5 py-3 rounded-full bg-[#FAF8F5]/90 dark:bg-[#2A221E]/90 border border-accent/25 backdrop-blur-md shadow-xl text-ink hover:text-accent hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+        className="px-5 py-3 rounded-full bg-surface/90 border border-accent/25 backdrop-blur-md shadow-xl text-ink hover:text-accent hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
         aria-label="Toggle background music"
       >
         <Music className={`w-4 h-4 text-accent ${isPlaying ? 'animate-spin' : 'opacity-70'}`} style={{ animationDuration: '8s' }} />

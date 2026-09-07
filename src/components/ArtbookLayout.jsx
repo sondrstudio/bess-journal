@@ -21,13 +21,13 @@ export function ArtbookLayout({ onOpenPhoto }) {
           {/* Delicate Divider Line between days */}
           {index < entries.length - 1 && (
             <div className="flex flex-col items-center justify-center py-6 opacity-60">
-              <div className="w-48 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mb-3" />
-              <div className="flex items-center gap-3 text-[#B7410E]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+              <div className="w-48 h-[1px] bg-gradient-to-r from-transparent via-[#E0A3BC] to-transparent mb-3" />
+              <div className="flex items-center gap-3 text-accent">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E0A3BC]" />
                 <Heart className="w-3.5 h-3.5 fill-current" />
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E0A3BC]" />
               </div>
-              <div className="w-48 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mt-3" />
+              <div className="w-48 h-[1px] bg-gradient-to-r from-transparent via-[#E0A3BC] to-transparent mt-3" />
             </div>
           )}
         </React.Fragment>

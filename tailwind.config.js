@@ -11,6 +11,8 @@ export default {
         primary: 'rgba(var(--color-primary), <alpha-value>)',
         accent: 'rgba(var(--color-accent), <alpha-value>)',
         background: 'rgba(var(--color-background), <alpha-value>)',
+        surface: 'rgba(var(--color-surface), <alpha-value>)',
+        'surface-2': 'rgba(var(--color-surface-2), <alpha-value>)',
         ink: 'rgba(var(--color-ink), <alpha-value>)',
       },
       fontFamily: {

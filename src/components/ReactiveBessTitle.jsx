@@ -39,7 +39,7 @@ export function ReactiveBessTitle({ showIntro }) {
             onClick={() => handleLetterClick(index)}
             className={`inline-block cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform origin-bottom ${
               isCenter
-                ? 'text-ink dark:text-amber-100 z-30 drop-shadow-[0_12px_24px_rgba(183,65,14,0.45)]'
+                ? 'text-ink dark:text-rose-100 z-30 drop-shadow-[0_12px_24px_rgba(183,65,14,0.45)]'
                 : isNeighbor
                 ? 'text-accent/90 z-20 drop-shadow-[0_6px_14px_rgba(183,65,14,0.25)]'
                 : 'text-accent translate-y-0 scale-100 rotate-0 z-10'

@@ -177,7 +177,7 @@ export function FirecrackerRopeUnlock({ onUnlock }) {
           life: 1.0,
           decay: Math.random() * 0.025 + 0.012,
           size: Math.random() * 3.5 + 2.0,
-          color: '#2C1D11',
+          color: '#2A1620',
         });
       }
     };
@@ -357,9 +357,9 @@ export function FirecrackerRopeUnlock({ onUnlock }) {
         if (p.life > 0.75) {
           color = '#FFFFFF'; // Incandescent White-Hot Core
         } else if (p.life > 0.42) {
-          color = '#FFD700'; // Sizzling Electric Gold
+          color = '#FFB3CE'; // Sizzling Electric Gold
         } else if (p.life > 0.22) {
-          color = '#FF6F00'; // Warm Amber Flame
+          color = '#FF5C8A'; // Warm Amber Flame
         } else {
           color = '#E63946'; // Smoldering Red Ember
         }
@@ -520,7 +520,7 @@ export function FirecrackerRopeUnlock({ onUnlock }) {
           particleCount: 150,
           spread: 130,
           origin: { y: 0.5 },
-          colors: ['#FFD700', '#8B5A2B', '#FF4500', '#FAF8F5']
+          colors: ['#FFB3CE', '#9E4A6B', '#FF5C8A', '#FDF7F9']
         });
         setTimeout(() => {
           onUnlock();
@@ -551,13 +551,13 @@ export function FirecrackerRopeUnlock({ onUnlock }) {
           
           {/* Top Anchor Support - Heavy Wooden Beam & Brass Mount */}
           <g>
-            <rect x="60" y="0" width="100" height="14" rx="4" fill="#3D2817" stroke="#26170D" strokeWidth="2" />
-            <rect x="64" y="2" width="92" height="10" rx="3" fill="#5C3A21" />
-            <circle cx="75" cy="7" r="2.5" fill="#26170D" />
-            <circle cx="145" cy="7" r="2.5" fill="#26170D" />
+            <rect x="60" y="0" width="100" height="14" rx="4" fill="#45182C" stroke="#1A0E14" strokeWidth="2" />
+            <rect x="64" y="2" width="92" height="10" rx="3" fill="#7A3350" />
+            <circle cx="75" cy="7" r="2.5" fill="#1A0E14" />
+            <circle cx="145" cy="7" r="2.5" fill="#1A0E14" />
 
-            <circle cx="110" cy="20" r="15" fill="none" stroke="#26170D" strokeWidth="6" />
-            <circle cx="110" cy="20" r="15" fill="none" stroke="#8B5A2B" strokeWidth="3.5" />
+            <circle cx="110" cy="20" r="15" fill="none" stroke="#1A0E14" strokeWidth="6" />
+            <circle cx="110" cy="20" r="15" fill="none" stroke="#9E4A6B" strokeWidth="3.5" />
           </g>
 
           {/* Dynamic Physics-Driven Braided Rope Layers */}
@@ -568,7 +568,7 @@ export function FirecrackerRopeUnlock({ onUnlock }) {
                 ref={ropePathRef}
                 d={svgPathD}
                 fill="none"
-                stroke="#4A2E1B"
+                stroke="#5C2340"
                 strokeWidth="22"
                 strokeLinecap="round"
               />
@@ -577,7 +577,7 @@ export function FirecrackerRopeUnlock({ onUnlock }) {
               <path
                 d={svgPathD}
                 fill="none"
-                stroke="#26170D"
+                stroke="#1A0E14"
                 strokeWidth="24"
                 strokeDasharray="14 14"
                 strokeOpacity="0.45"
@@ -588,7 +588,7 @@ export function FirecrackerRopeUnlock({ onUnlock }) {
               <path
                 d={svgPathD}
                 fill="none"
-                stroke="#8B5A2B"
+                stroke="#9E4A6B"
                 strokeWidth="11"
                 strokeDasharray="18 14"
                 strokeLinecap="round"
@@ -598,7 +598,7 @@ export function FirecrackerRopeUnlock({ onUnlock }) {
               <path
                 d={svgPathD}
                 fill="none"
-                stroke="#3D2817"
+                stroke="#45182C"
                 strokeWidth="7"
                 strokeDasharray="14 16"
                 strokeDashoffset="6"
@@ -609,7 +609,7 @@ export function FirecrackerRopeUnlock({ onUnlock }) {
               <path
                 d={svgPathD}
                 fill="none"
-                stroke="#D4C5B3"
+                stroke="#E0C3D2"
                 strokeWidth="3.5"
                 strokeDasharray="8 20"
                 strokeDashoffset="4"
@@ -620,30 +620,30 @@ export function FirecrackerRopeUnlock({ onUnlock }) {
 
           {/* Top Anchor Knot Detail - Wraps around the ring at y=20 */}
           <g className="pointer-events-none">
-            <ellipse cx="110" cy="22" rx="16" ry="9" fill="#4A2E1B" stroke="#26170D" strokeWidth="2.5" />
-            <path d="M 98 19 C 105 26, 115 26, 122 19" fill="none" stroke="#8B5A2B" strokeWidth="3" />
-            <path d="M 95 23 C 105 30, 115 30, 125 23" fill="none" stroke="#3D2817" strokeWidth="2.5" />
+            <ellipse cx="110" cy="22" rx="16" ry="9" fill="#5C2340" stroke="#1A0E14" strokeWidth="2.5" />
+            <path d="M 98 19 C 105 26, 115 26, 122 19" fill="none" stroke="#9E4A6B" strokeWidth="3" />
+            <path d="M 95 23 C 105 30, 115 30, 125 23" fill="none" stroke="#45182C" strokeWidth="2.5" />
           </g>
 
           {/* Sizzling Active Ember Edge (Appears right at the burning tip of the rope) */}
           {isIgnited && burnProgressRef.current < 1 && (
-            <circle cx={sparkPos.x} cy={sparkPos.y} r="14" fill="#FF4500" opacity="0.8" />
+            <circle cx={sparkPos.x} cy={sparkPos.y} r="14" fill="#FF5C8A" opacity="0.8" />
           )}
 
           {/* Target Highlight Ring at Rope Tip - Warm Amber Coffee Style */}
           {!isIgnited && (
             <g transform={`translate(${sparkPos.x}, ${sparkPos.y})`}>
-              <circle r="26" fill="#D4AF37" opacity="0.25" className="animate-ping" />
-              <circle r="11" fill="#6F4E37" />
-              <circle r="4" fill="#FAF8F5" />
+              <circle r="26" fill="#E0A3BC" opacity="0.25" className="animate-ping" />
+              <circle r="11" fill="#7A3350" />
+              <circle r="4" fill="#FDF7F9" />
             </g>
           )}
 
           {/* Bright White-Hot Spark Head */}
           {isIgnited && burnProgressRef.current < 1 && (
             <g transform={`translate(${sparkPos.x}, ${sparkPos.y})`}>
-              <circle r="24" fill="#FF4500" opacity="0.6" className="animate-ping" />
-              <circle r="14" fill="#FFD700" />
+              <circle r="24" fill="#FF5C8A" opacity="0.6" className="animate-ping" />
+              <circle r="14" fill="#FFB3CE" />
               <circle r="6" fill="#FFFFFF" />
             </g>
           )}
@@ -653,7 +653,7 @@ export function FirecrackerRopeUnlock({ onUnlock }) {
             <text 
               x="210" 
               y="160" 
-              fill="#3D2817" 
+              fill="#45182C" 
               fontSize="22" 
               fontFamily="Satisfy, cursive" 
               transform="rotate(4, 210, 160)" 
@@ -666,7 +666,7 @@ export function FirecrackerRopeUnlock({ onUnlock }) {
               <path 
                 d={`M 225 175 Q 175 240 ${sparkPos.x + 28} ${sparkPos.y - 10}`} 
                 fill="none" 
-                stroke="#3D2817" 
+                stroke="#45182C" 
                 strokeWidth="2.5" 
                 strokeLinecap="round" 
                 strokeDasharray="4 3" 
@@ -677,7 +677,7 @@ export function FirecrackerRopeUnlock({ onUnlock }) {
               <path 
                 d={`M ${sparkPos.x + 38} ${sparkPos.y - 18} L ${sparkPos.x + 28} ${sparkPos.y - 10} L ${sparkPos.x + 36} ${sparkPos.y - 2}`} 
                 fill="none" 
-                stroke="#3D2817" 
+                stroke="#45182C" 
                 strokeWidth="2.5" 
                 strokeLinecap="round" 
                 strokeLinejoin="round" 

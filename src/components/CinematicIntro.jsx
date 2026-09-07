@@ -207,7 +207,7 @@ export const CinematicIntro = ({ onComplete }) => {
   return (
     <div 
       ref={overlayRef} 
-      className="fixed inset-0 z-50 bg-[#F5F3EE] flex items-center justify-center p-8 md:p-20 pointer-events-auto transition-colors duration-1000 overflow-hidden"
+      className="fixed inset-0 z-50 bg-background flex items-center justify-center p-8 md:p-20 pointer-events-auto transition-colors duration-1000 overflow-hidden"
     >
       {/* Background analog noise texture */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-overlay bg-[url('/textures/rice-paper.webp')]"></div>

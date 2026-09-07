@@ -167,7 +167,7 @@ export function AuthorEditorModal() {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed top-5 right-5 z-[9990] p-3 rounded-full bg-[#FAF8F5]/80 backdrop-blur-md border border-ink/15 text-ink hover:text-accent hover:scale-110 transition-all shadow-md group"
+        className="fixed top-5 right-5 z-[9990] p-3 rounded-full bg-surface/80 backdrop-blur-md border border-ink/15 text-ink hover:text-accent hover:scale-110 transition-all shadow-md group"
         title="Author Editor Portal (Cmd+Shift+E)"
       >
         <Edit3 className="w-4 h-4" />
@@ -189,7 +189,7 @@ export function AuthorEditorModal() {
       <div
         ref={editorScrollRef}
         tabIndex={0}
-        className="relative bg-[#FAF8F5] max-w-2xl w-full p-6 sm:p-8 md:p-12 rounded-[2.5rem] border border-ink/20 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto overscroll-contain custom-scrollbar my-auto select-auto focus:outline-none"
+        className="relative bg-surface max-w-2xl w-full p-6 sm:p-8 md:p-12 rounded-[2.5rem] border border-ink/20 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto overscroll-contain custom-scrollbar my-auto select-auto focus:outline-none"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Modal Button */}
@@ -218,7 +218,7 @@ export function AuthorEditorModal() {
                 placeholder="Enter passcode..."
                 value={passcode}
                 onChange={(e) => setPasscode(e.target.value)}
-                className="w-full px-5 py-3 rounded-full bg-white border border-ink/20 text-center font-mono text-lg focus:outline-none focus:border-accent"
+                className="w-full px-5 py-3 rounded-full bg-surface border border-ink/20 text-center font-mono text-lg focus:outline-none focus:border-accent"
                 autoFocus
               />
               {passError && <p className="text-xs text-rose-600 font-serif">Incorrect passcode. Try '1234' or 'love'.</p>}
@@ -258,7 +258,7 @@ export function AuthorEditorModal() {
               <select
                 value={selectedDayId}
                 onChange={(e) => setSelectedDayId(Number(e.target.value))}
-                className="w-full px-4 py-3 rounded-2xl bg-white border border-ink/20 font-serif text-lg text-ink focus:outline-none focus:border-accent"
+                className="w-full px-4 py-3 rounded-2xl bg-surface border border-ink/20 font-serif text-lg text-ink focus:outline-none focus:border-accent"
               >
                 {entries.map((e) => (
                   <option key={e.id} value={e.id}>
@@ -277,7 +277,7 @@ export function AuthorEditorModal() {
                 type="text"
                 value={currentTitle}
                 onChange={(e) => setCurrentTitle(e.target.value)}
-                className="w-full px-4 py-3 rounded-2xl bg-white border border-ink/20 font-serif text-xl text-ink focus:outline-none focus:border-accent"
+                className="w-full px-4 py-3 rounded-2xl bg-surface border border-ink/20 font-serif text-xl text-ink focus:outline-none focus:border-accent"
               />
             </div>
 
@@ -290,7 +290,7 @@ export function AuthorEditorModal() {
                 value={currentThought}
                 onChange={(e) => setCurrentThought(e.target.value)}
                 rows={5}
-                className="w-full p-4 rounded-2xl bg-white border border-ink/20 font-handwritten text-2xl text-ink/90 leading-relaxed focus:outline-none focus:border-accent resize-none"
+                className="w-full p-4 rounded-2xl bg-surface border border-ink/20 font-handwritten text-2xl text-ink/90 leading-relaxed focus:outline-none focus:border-accent resize-none"
               />
             </div>
 
@@ -304,7 +304,7 @@ export function AuthorEditorModal() {
                   type="text"
                   value={currentTag}
                   onChange={(e) => setCurrentTag(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-2xl bg-white border border-ink/20 font-serif text-sm text-ink focus:outline-none focus:border-accent"
+                  className="w-full px-4 py-2.5 rounded-2xl bg-surface border border-ink/20 font-serif text-sm text-ink focus:outline-none focus:border-accent"
                 />
               </div>
 
@@ -316,7 +316,7 @@ export function AuthorEditorModal() {
                   type="datetime-local"
                   value={currentUnlockDate}
                   onChange={(e) => setCurrentUnlockDate(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-2xl bg-white border border-ink/20 font-mono text-xs text-ink focus:outline-none focus:border-accent"
+                  className="w-full px-4 py-2.5 rounded-2xl bg-surface border border-ink/20 font-mono text-xs text-ink focus:outline-none focus:border-accent"
                 />
               </div>
             </div>
@@ -326,7 +326,7 @@ export function AuthorEditorModal() {
               const active = entries.find((e) => e.id === Number(selectedDayId));
               if (active && active.herReaction) {
                 return (
-                  <div className="p-4 rounded-2xl bg-[#FFFBEB] border border-[#FCD34D] space-y-1">
+                  <div className="p-4 rounded-2xl bg-[#FFF5F9] border border-[#FF9EC0] space-y-1">
                     <div className="flex items-center justify-between">
                       <span className="font-handwritten text-lg text-rose-600 font-bold flex items-center gap-1.5">
                         <Heart className="w-4 h-4 fill-current text-rose-500" /> Her reaction for this day:
@@ -377,12 +377,12 @@ export function AuthorEditorModal() {
               >
                 {isSaving ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin text-white" />
+                    <Loader2 className="w-4 h-4 animate-spin text-primary" />
                     Syncing to Cloud...
                   </>
                 ) : saveSuccess ? (
                   <>
-                    <Check className="w-4 h-4 text-emerald-400" />
+                    <Check className="w-4 h-4 text-rose-400" />
                     Saved Live to Cloud!
                   </>
                 ) : (

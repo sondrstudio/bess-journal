@@ -4,12 +4,15 @@ import { X, Share2, Heart, Send, Loader2, Edit2, Trash2, Eye, EyeOff } from 'luc
 import confetti from 'canvas-confetti';
 import { ShareExportModal } from './ShareExportModal';
 
+// Five tints of the one pink family, distinguishable without leaving the
+// palette. Deliberately fixed rather than tokens: a sticky note reads as paper
+// in both modes, and the note text beside it is fixed to match.
 const POST_IT_COLORS = [
-  { bg: 'bg-[#FEF9C3]', border: 'border-[#FDE047]', pin: '#D97706', tape: 'bg-amber-200/60' }, // Gold / Yellow
-  { bg: 'bg-[#FFE4E6]', border: 'border-[#FECDD3]', pin: '#E11D48', tape: 'bg-rose-200/60' },  // Pink / Rose
-  { bg: 'bg-[#D1FAE5]', border: 'border-[#A7F3D0]', pin: '#059669', tape: 'bg-emerald-200/60' }, // Mint / Sage
-  { bg: 'bg-[#E0E7FF]', border: 'border-[#C7D2FE]', pin: '#2563EB', tape: 'bg-indigo-200/60' }, // Lavender / Blue
-  { bg: 'bg-[#FFEDD5]', border: 'border-[#FDE68A]', pin: '#EA580C', tape: 'bg-orange-200/60' }, // Peach / Sunset
+  { bg: 'bg-[#FFF0F5]', border: 'border-[#FFD6E4]', pin: '#C2185B', tape: 'bg-rose-200/60' }, // Blush
+  { bg: 'bg-[#FFE4EF]', border: 'border-[#FECDD3]', pin: '#E11D48', tape: 'bg-rose-200/60' }, // Rose
+  { bg: 'bg-[#FCE7F3]', border: 'border-[#FBCFE8]', pin: '#DB2777', tape: 'bg-rose-200/60' }, // Peony
+  { bg: 'bg-[#F7E4EC]', border: 'border-[#EFC9DA]', pin: '#9E4A6B', tape: 'bg-rose-200/60' }, // Mauve
+  { bg: 'bg-[#FFE8EC]', border: 'border-[#FFCDD5]', pin: '#E63946', tape: 'bg-rose-200/60' }, // Coral
 ];
 
 const ROTATIONS = [
@@ -78,7 +81,7 @@ export function PinboardArchive() {
         particleCount: 35,
         spread: 70,
         origin: { y: 0.7 },
-        colors: ['#D4AF37', '#FFD700', '#B7410E', '#FAF8F5'],
+        colors: ['#E0A3BC', '#FFB3CE', '#C2185B', '#FDF7F9'],
       });
     }
     setShowSecret(!showSecret);
@@ -95,7 +98,7 @@ export function PinboardArchive() {
         particleCount: 45,
         spread: 80,
         origin: { y: 0.8 },
-        colors: ['#E11D48', '#FFD700', '#B7410E', '#FAF8F5'],
+        colors: ['#E11D48', '#FFB3CE', '#C2185B', '#FDF7F9'],
       });
     } catch (err) {
       console.error('Failed to save reaction from archive:', err);
@@ -121,7 +124,7 @@ export function PinboardArchive() {
   return (
     <section className="py-16 px-4 md:px-12 max-w-6xl mx-auto my-12">
       {/* Pin Board Surface */}
-      <div className="relative bg-[#EFE6D5] dark:bg-[#251D17] border-4 border-[#8B5A2B]/40 rounded-[3rem] p-6 md:p-14 shadow-2xl overflow-hidden">
+      <div className="relative bg-[#F7E4EC] border-4 border-[#9E4A6B]/40 rounded-[3rem] p-6 md:p-14 shadow-2xl overflow-hidden">
         {/* Pin Board Header */}
         <div className="text-center space-y-3 mb-12 relative z-10">
           <p className="font-handwritten text-2xl md:text-3xl text-ink/80">
@@ -143,7 +146,7 @@ export function PinboardArchive() {
               >
                 {/* Washi Tape or Push Pin Accent */}
                 {index % 2 === 0 ? (
-                  <div className={`absolute top-[-12px] left-1/2 -translate-x-1/2 w-20 h-6 ${color.tape} backdrop-blur-sm rotate-[-1deg] border border-white/40 shadow-sm z-20 pointer-events-none`} />
+                  <div className={`absolute top-[-12px] left-1/2 -translate-x-1/2 w-20 h-6 ${color.tape} backdrop-blur-sm rotate-[-1deg] border border-ink/40 shadow-sm z-20 pointer-events-none`} />
                 ) : (
                   <div className="absolute top-2 right-4 z-20 pointer-events-none">
                     <svg viewBox="0 0 24 24" className="w-6 h-6 drop-shadow-sm" fill={color.pin}>
@@ -154,21 +157,21 @@ export function PinboardArchive() {
 
                 {/* Note Content Header */}
                 <div className="space-y-2">
-                  <span className="font-mono text-xs uppercase tracking-widest text-[#5D4037] dark:text-[#5D4037] font-bold block opacity-75">
+                  <span className="font-mono text-xs uppercase tracking-widest text-ink font-bold block opacity-75">
                     Day 0{entry.id}
                   </span>
-                  <h3 className="font-serif text-xl md:text-2xl text-[#251D17] dark:text-[#251D17] font-bold leading-tight group-hover:text-[#B7410E] transition-colors">
+                  <h3 className="font-serif text-xl md:text-2xl text-[#2A1620] font-bold leading-tight group-hover:text-accent transition-colors">
                     {entry.title}
                   </h3>
                 </div>
 
                 {/* Note Snippet */}
-                <p className="font-handwritten text-xl md:text-2xl text-[#3D2817] dark:text-[#3D2817] leading-snug line-clamp-3 mt-4">
+                <p className="font-handwritten text-xl md:text-2xl text-ink leading-snug line-clamp-3 mt-4">
                   "{entry.thought}"
                 </p>
 
                 {/* Footer Tag & Reaction Status */}
-                <div className="mt-4 pt-3 border-t border-[#3D2817]/15 flex items-center justify-between text-xs font-serif text-[#5D4037] dark:text-[#5D4037]">
+                <div className="mt-4 pt-3 border-t border-ink/15 flex items-center justify-between text-xs font-serif text-ink">
                   <div className="flex items-center gap-2">
                     <span>{entry.themeTag || 'Thought'}</span>
                     {entry.herReaction && (
@@ -180,7 +183,7 @@ export function PinboardArchive() {
                       </span>
                     )}
                   </div>
-                  <span className="font-handwritten text-lg text-[#B7410E] dark:text-[#B7410E] group-hover:translate-x-1 transition-transform">
+                  <span className="font-handwritten text-lg text-accent group-hover:translate-x-1 transition-transform">
                     Read note →
                   </span>
                 </div>
@@ -193,7 +196,7 @@ export function PinboardArchive() {
       {/* Lightbox Modal for Selected Archived Note */}
       {selectedNote && (
         <div
-          className="fixed inset-0 z-[9999] bg-ink/70 dark:bg-black/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 md:p-10 animate-fade-blur-in overflow-hidden select-none overscroll-contain"
+          className="fixed inset-0 z-[9999] bg-ink/70 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 md:p-10 animate-fade-blur-in overflow-hidden select-none overscroll-contain"
           onClick={() => setSelectedNoteId(null)}
           onWheel={(e) => {
             if (modalScrollRef.current) {
@@ -204,38 +207,38 @@ export function PinboardArchive() {
           <div
             ref={modalScrollRef}
             tabIndex={0}
-            className="relative bg-[#FAF8F5] dark:bg-[#201914] max-w-2xl w-full max-h-[85vh] overflow-y-auto overscroll-contain custom-scrollbar p-6 sm:p-8 md:p-12 rounded-[2.5rem] border border-ink/15 dark:border-white/15 shadow-2xl space-y-6 animate-fade-blur-in my-auto select-auto focus:outline-none"
+            className="relative bg-surface max-w-2xl w-full max-h-[85vh] overflow-y-auto overscroll-contain custom-scrollbar p-6 sm:p-8 md:p-12 rounded-[2.5rem] border border-ink/15 shadow-2xl space-y-6 animate-fade-blur-in my-auto select-auto focus:outline-none"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setSelectedNoteId(null)}
-              className="absolute top-6 right-6 p-3 rounded-full bg-ink/5 dark:bg-white/10 text-ink dark:text-white hover:bg-accent/20 hover:text-accent transition-colors"
+              className="absolute top-6 right-6 p-3 rounded-full bg-ink/5 text-ink hover:bg-accent/20 hover:text-accent transition-colors"
               aria-label="Close modal"
             >
               <X className="w-6 h-6" />
             </button>
 
             {/* Title */}
-            <div className="space-y-2 border-b border-ink/10 dark:border-white/10 pb-4">
+            <div className="space-y-2 border-b border-ink/10 pb-4">
               <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold">
                 Day 0{selectedNote.id} — Archived Note
               </span>
-              <h2 className="font-serif text-3xl md:text-5xl text-[#251D17] dark:text-[#FAF8F5]">
+              <h2 className="font-serif text-3xl md:text-5xl text-[#2A1620]">
                 {selectedNote.title}
               </h2>
             </div>
 
             {/* Full Handwritten Text Field */}
             <div className="py-2">
-              <p className="font-handwritten text-2xl md:text-3xl text-[#3D2817] dark:text-[#F5F3EE] leading-relaxed">
+              <p className="font-handwritten text-2xl md:text-3xl text-ink leading-relaxed">
                 "{selectedNote.thought}"
               </p>
             </div>
 
             {/* Secret Reveal (if present on archived note) */}
             {selectedNote.secretReveal && (
-              <div className="pt-2 border-t border-ink/10 dark:border-white/10">
+              <div className="pt-2 border-t border-ink/10">
                 <button
                   onClick={handleSecretToggle}
                   className="font-handwritten text-xl text-accent/80 hover:text-accent transition-colors flex items-center gap-2 group"
@@ -257,7 +260,7 @@ export function PinboardArchive() {
             )}
 
             {/* ================= HER REACTION / HANDWRITTEN MARGIN WHISPER ================= */}
-            <section className="pt-4 border-t border-ink/10 dark:border-white/10 select-none relative">
+            <section className="pt-4 border-t border-ink/10 select-none relative">
               <div className="flex items-center justify-between mb-3">
                 <span className="font-handwritten text-xl text-accent font-bold flex items-center gap-1.5">
                   <Heart className="w-4 h-4 fill-current text-rose-500" />
@@ -267,7 +270,7 @@ export function PinboardArchive() {
                   <div className="flex items-center gap-3 text-xs font-serif text-accent/70 tracking-widest uppercase">
                     <button
                       onClick={() => setIsEditingReaction(true)}
-                      className="text-ink/50 dark:text-white/60 hover:text-accent flex items-center gap-1 text-[11px] transition-colors"
+                      className="text-ink/50 hover:text-accent flex items-center gap-1 text-[11px] transition-colors"
                     >
                       <Edit2 className="w-3 h-3" /> Edit
                     </button>
@@ -287,7 +290,7 @@ export function PinboardArchive() {
                 <div className="relative pl-6 md:pl-8 my-2 space-y-2 group animate-fade-blur-in">
                   {/* Delicate hand-drawn margin vertical accent line */}
                   <div className="absolute left-0 top-1 bottom-1 w-1 bg-accent/40 rounded-full group-hover:bg-accent transition-colors" />
-                  <p className="font-handwritten text-2xl md:text-3xl text-ink dark:text-amber-100 leading-relaxed italic rotate-[-1deg] select-text py-1">
+                  <p className="font-handwritten text-2xl md:text-3xl text-ink dark:text-rose-100 leading-relaxed italic rotate-[-1deg] select-text py-1">
                     "{selectedNote.herReaction}"
                   </p>
                   <span className="block font-handwritten text-lg text-accent/80 text-right pr-2 italic">
@@ -302,7 +305,7 @@ export function PinboardArchive() {
                     value={reactionText}
                     onChange={(e) => setReactionText(e.target.value)}
                     rows={2}
-                    className="w-full bg-transparent border-b border-ink/20 focus:border-accent font-handwritten text-2xl md:text-3xl text-ink dark:text-white leading-relaxed focus:outline-none resize-none placeholder:text-ink/30 dark:placeholder:text-white/30 placeholder:font-handwritten"
+                    className="w-full bg-transparent border-b border-ink/20 focus:border-accent font-handwritten text-2xl md:text-3xl text-ink leading-relaxed focus:outline-none resize-none placeholder:text-ink/30 dark:placeholder:text-primary/30 placeholder:font-handwritten"
                     placeholder="Leave a whisper or reaction for this memory..."
                     autoFocus={isEditingReaction}
                   />
@@ -316,7 +319,7 @@ export function PinboardArchive() {
                             setReactionText(selectedNote.herReaction || '');
                             setIsEditingReaction(false);
                           }}
-                          className="text-xs font-serif text-ink/50 dark:text-white/60 hover:text-ink dark:hover:text-white transition-colors"
+                          className="text-xs font-serif text-ink/50 hover:text-ink transition-colors"
                         >
                           Cancel
                         </button>
@@ -335,19 +338,19 @@ export function PinboardArchive() {
                       type="button"
                       onClick={handleSaveReaction}
                       disabled={!reactionText.trim() || isSavingReaction}
-                      className="px-4 py-2 bg-accent text-white hover:bg-ink rounded-full transition-all shadow-md hover:scale-105 active:scale-95 disabled:opacity-30 disabled:pointer-events-none ml-auto group flex items-center gap-2 font-handwritten text-lg"
+                      className="px-4 py-2 bg-accent text-primary hover:bg-ink rounded-full transition-all shadow-md hover:scale-105 active:scale-95 disabled:opacity-30 disabled:pointer-events-none ml-auto group flex items-center gap-2 font-handwritten text-lg"
                       title="Send Whisper"
                       aria-label="Send Whisper"
                     >
                       {isSavingReaction ? (
                         <>
-                          <Loader2 className="w-4 h-4 animate-spin text-white" />
+                          <Loader2 className="w-4 h-4 animate-spin text-primary" />
                           <span>Saving...</span>
                         </>
                       ) : (
                         <>
                           <span>Send Whisper</span>
-                          <Send className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-white" />
+                          <Send className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-primary" />
                         </>
                       )}
                     </button>
@@ -357,7 +360,7 @@ export function PinboardArchive() {
             </section>
 
             {/* Footer */}
-            <div className="pt-4 border-t border-ink/10 dark:border-white/10 flex items-center justify-end">
+            <div className="pt-4 border-t border-ink/10 flex items-center justify-end">
               <button
                 onClick={() => setExportingNote(selectedNote)}
                 className="p-3.5 rounded-full bg-accent hover:bg-ink text-background hover:scale-110 active:scale-95 transition-all shadow-md group"

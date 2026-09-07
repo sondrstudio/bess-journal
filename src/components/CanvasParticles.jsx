@@ -97,7 +97,7 @@ export function CanvasParticles() {
     
     function init() {
       particles = [];
-      const colors = ['#B7410E', '#E8E4DD', '#3D2817']; // Vintage accents
+      const colors = ['#C2185B', '#F0DEE6', '#45182C']; // Vintage accents
       for (let i = 0; i < numParticles; i++) {
         let size = (Math.random() * 2) + 0.5;
         let x = (Math.random() * ((canvas.width - size * 2) - (size * 2)) + size * 2);

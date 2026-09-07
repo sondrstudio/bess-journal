@@ -24,22 +24,22 @@ export function PhotoLightbox({ photoUrl, caption, onClose }) {
 
   return (
     <div 
-      className="fixed inset-0 z-50 bg-[#3D2817]/80 backdrop-blur-md flex items-center justify-center p-4 md:p-8 animate-[fade-in_0.3s_ease-out]"
+      className="fixed inset-0 z-50 bg-ink/80 backdrop-blur-md flex items-center justify-center p-4 md:p-8 animate-[fade-in_0.3s_ease-out]"
       onClick={onClose}
     >
       <div 
-        className="relative max-w-3xl w-full bg-[#FAF8F5] p-6 md:p-8 rounded-[2rem] shadow-2xl border border-[#B7410E]/20 flex flex-col items-center"
+        className="relative max-w-3xl w-full bg-surface p-6 md:p-8 rounded-[2rem] shadow-2xl border border-accent/20 flex flex-col items-center"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full bg-[#E8E4DD] text-[#3D2817] hover:bg-[#B7410E] hover:text-white transition-colors"
+          className="absolute top-4 right-4 p-2 rounded-full bg-surface-2 text-ink hover:bg-accent hover:text-primary transition-colors"
           aria-label="Close photo"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <div className="w-full max-h-[70vh] overflow-hidden rounded-[1.5rem] bg-[#E8E4DD]">
+        <div className="w-full max-h-[70vh] overflow-hidden rounded-[1.5rem] bg-surface-2">
           <img 
             src={photoUrl} 
             alt={caption || 'Memory'} 
@@ -48,7 +48,7 @@ export function PhotoLightbox({ photoUrl, caption, onClose }) {
         </div>
 
         {caption && (
-          <p className="mt-6 font-handwritten text-2xl md:text-3xl text-[#B7410E] text-center">
+          <p className="mt-6 font-handwritten text-2xl md:text-3xl text-accent text-center">
             "{caption}"
           </p>
         )}

@@ -12,7 +12,7 @@ export function ButterflySwarm({ count = 25, active = false }) {
       size: Math.random() * 24 + 18,
       duration: Math.random() * 3 + 2.5,
       delay: Math.random() * 0.8,
-      color: i % 3 === 0 ? '#FFD700' : i % 3 === 1 ? '#B7410E' : '#F7E7CE',
+      color: i % 3 === 0 ? '#FFB3CE' : i % 3 === 1 ? '#C2185B' : '#F7DCE7',
       rotation: (Math.random() - 0.5) * 40,
     }));
     setButterflies(list);
@@ -52,7 +52,7 @@ export function ButterflySwarm({ count = 25, active = false }) {
                 className="animate-[flapRight_0.3s_infinite_alternate_ease-in-out] origin-[25px_25px]"
               />
               {/* Body */}
-              <ellipse cx="25" cy="25" rx="1.5" ry="7" fill="#3D2817" />
+              <ellipse cx="25" cy="25" rx="1.5" ry="7" fill="#45182C" />
             </g>
           </svg>
         </div>

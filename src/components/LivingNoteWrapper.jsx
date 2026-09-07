@@ -183,9 +183,9 @@ export function LivingNoteWrapper({ children, entryData }) {
         {/* ================= PEN TIP FIREFLIES ================= */}
         {isFocused && (
           <div className="absolute inset-0 pointer-events-none z-20 overflow-hidden">
-            <div className="absolute top-1/3 left-1/4 w-2 h-2 rounded-full bg-[#FFD700] shadow-[0_0_15px_#FFD700] animate-[fireflyOrbit_4s_infinite_ease-in-out]" />
-            <div className="absolute top-1/2 right-1/4 w-2.5 h-2.5 rounded-full bg-[#FFB700] shadow-[0_0_18px_#FFB700] animate-[fireflyOrbit_5s_infinite_ease-in-out_1s]" />
-            <div className="absolute bottom-1/3 left-1/2 w-2 h-2 rounded-full bg-[#FFE57F] shadow-[0_0_12px_#FFE57F] animate-[fireflyOrbit_3.5s_infinite_ease-in-out_0.5s]" />
+            <div className="absolute top-1/3 left-1/4 w-2 h-2 rounded-full bg-[#FFB3CE] shadow-[0_0_15px_#FFB3CE] animate-[fireflyOrbit_4s_infinite_ease-in-out]" />
+            <div className="absolute top-1/2 right-1/4 w-2.5 h-2.5 rounded-full bg-[#FF9EC0] shadow-[0_0_18px_#FF9EC0] animate-[fireflyOrbit_5s_infinite_ease-in-out_1s]" />
+            <div className="absolute bottom-1/3 left-1/2 w-2 h-2 rounded-full bg-[#FFD6E4] shadow-[0_0_12px_#FFD6E4] animate-[fireflyOrbit_3.5s_infinite_ease-in-out_0.5s]" />
           </div>
         )}
 

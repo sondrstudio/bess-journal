@@ -38,7 +38,7 @@ export function ActiveNoteCard({ entry }) {
         particleCount: 35,
         spread: 70,
         origin: { y: 0.7 },
-        colors: ['#D4AF37', '#FFD700', '#B7410E', '#FAF8F5']
+        colors: ['#E0A3BC', '#FFB3CE', '#C2185B', '#FDF7F9']
       });
     }
     setShowSecret(!showSecret);
@@ -55,7 +55,7 @@ export function ActiveNoteCard({ entry }) {
         particleCount: 45,
         spread: 80,
         origin: { y: 0.8 },
-        colors: ['#E11D48', '#FFD700', '#B7410E', '#FAF8F5']
+        colors: ['#E11D48', '#FFB3CE', '#C2185B', '#FDF7F9']
       });
     } catch (err) {
       console.error(err);
@@ -79,24 +79,24 @@ export function ActiveNoteCard({ entry }) {
 
   if (!isUnlocked) {
     return (
-      <div className="relative w-full max-w-3xl mx-auto rounded-[2.5rem] bg-[#FAF8F5]/90 dark:bg-[#201914]/90 border border-ink/15 dark:border-white/15 p-8 md:p-12 shadow-xl overflow-hidden text-center my-8">
-        <div className="absolute inset-0 bg-[#F5F3EE]/85 dark:bg-[#1A1410]/90 backdrop-blur-xl z-10 flex flex-col items-center justify-center p-6 space-y-4">
+      <div className="relative w-full max-w-3xl mx-auto rounded-[2.5rem] bg-surface/90 border border-ink/15 p-8 md:p-12 shadow-xl overflow-hidden text-center my-8">
+        <div className="absolute inset-0 bg-background/85 backdrop-blur-xl z-10 flex flex-col items-center justify-center p-6 space-y-4">
           <div className="p-4 rounded-full bg-accent/10 text-accent animate-pulse">
             <Lock className="w-8 h-8" />
           </div>
-          <h3 className="font-serif text-2xl md:text-3xl text-ink dark:text-white font-bold">
+          <h3 className="font-serif text-2xl md:text-3xl text-ink font-bold">
             Day {entry.id} — {entry.title || 'Locked Entry'}
           </h3>
           <p className="font-handwritten text-xl text-accent">
             Unlocks on {unlockDate.toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}
           </p>
 
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-ink/5 dark:bg-white/10 border border-ink/15 text-ink dark:text-white font-mono text-xl font-bold tracking-widest shadow-inner my-4">
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-ink/5 border border-ink/15 text-ink font-mono text-xl font-bold tracking-widest shadow-inner my-4">
             <Clock className="w-5 h-5 text-accent animate-spin" style={{ animationDuration: '8s' }} />
             <span>{formatTimeLeft(timeLeft)}</span>
           </div>
 
-          <p className="text-xs font-serif text-ink/60 dark:text-white/60 italic max-w-sm">
+          <p className="text-xs font-serif text-ink/60 italic max-w-sm">
             Check back when the timer expires to read this daily entry.
           </p>
         </div>
@@ -135,7 +135,7 @@ export function ActiveNoteCard({ entry }) {
               <h3 className="font-handwritten text-2xl text-accent mb-2 flex items-center gap-2 relative z-10">
                 <Heart className="w-4 h-4 fill-current" /> Today's Poem
               </h3>
-              <div className="relative z-10 space-y-2 text-left font-serif text-lg md:text-xl text-ink/90 dark:text-white/90 leading-relaxed italic">
+              <div className="relative z-10 space-y-2 text-left font-serif text-lg md:text-xl text-ink/90 leading-relaxed italic">
                 {entry.poem.map((line, idx) => (
                   line === "" ? (
                     <div key={idx} className="h-4" />
@@ -153,7 +153,7 @@ export function ActiveNoteCard({ entry }) {
         {/* Optional Photo */}
         {entry.photoUrl && (
           <div className="flex flex-col items-center my-6">
-            <div className="group bg-white p-4 pb-6 rounded-2xl shadow-md border border-ink/10 transform hover:rotate-1 hover:scale-[1.02] transition-all duration-300 max-w-md w-full">
+            <div className="group bg-surface p-4 pb-6 rounded-2xl shadow-md border border-ink/10 transform hover:rotate-1 hover:scale-[1.02] transition-all duration-300 max-w-md w-full">
               <div className="aspect-[4/3] overflow-hidden rounded-xl bg-ink/5">
                 <img 
                   src={entry.photoUrl} 
@@ -222,7 +222,7 @@ export function ActiveNoteCard({ entry }) {
               </div>
 
               {/* Organic Handwritten Margin Note in Ink */}
-              <p className="font-handwritten text-3xl md:text-4xl text-ink dark:text-amber-100 leading-relaxed italic rotate-[-1deg] select-text py-1">
+              <p className="font-handwritten text-3xl md:text-4xl text-ink dark:text-rose-100 leading-relaxed italic rotate-[-1deg] select-text py-1">
                 "{entry.herReaction}"
               </p>
 
@@ -240,7 +240,7 @@ export function ActiveNoteCard({ entry }) {
                   value={reactionText}
                   onChange={(e) => setReactionText(e.target.value)}
                   rows={2}
-                  className="w-full bg-transparent border-b border-ink/20 focus:border-accent font-handwritten text-2xl md:text-3xl text-ink dark:text-white leading-relaxed focus:outline-none resize-none placeholder:text-ink/25 placeholder:font-handwritten"
+                  className="w-full bg-transparent border-b border-ink/20 focus:border-accent font-handwritten text-2xl md:text-3xl text-ink leading-relaxed focus:outline-none resize-none placeholder:text-ink/25 placeholder:font-handwritten"
                   placeholder="a reaction maybe?"
                 />
 
@@ -270,9 +270,9 @@ export function ActiveNoteCard({ entry }) {
                     aria-label="Send Whisper"
                   >
                     {isSavingReaction ? (
-                      <Loader2 className="w-4 h-4 animate-spin text-white" />
+                      <Loader2 className="w-4 h-4 animate-spin text-primary" />
                     ) : (
-                      <Send className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-white" />
+                      <Send className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-primary" />
                     )}
                   </button>
                 </div>

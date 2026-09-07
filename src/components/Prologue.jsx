@@ -332,7 +332,7 @@ export function Prologue({ onComplete }) {
       role="button"
       tabIndex={0}
       aria-label="A letter. Tap to continue."
-      className="fixed inset-0 z-[60] bg-[#F5F3EE] flex flex-col items-center justify-center px-7 md:px-20 cursor-pointer overflow-hidden select-none"
+      className="fixed inset-0 z-[60] bg-background flex flex-col items-center justify-center px-7 md:px-20 cursor-pointer overflow-hidden select-none"
     >
       {/* Same paper as the title sequence, so the two read as one shot. */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-overlay bg-[url('/textures/rice-paper.webp')]" />

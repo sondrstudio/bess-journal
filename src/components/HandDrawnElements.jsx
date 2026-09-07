@@ -96,12 +96,12 @@ export const SketchyEye = ({ className = '' }) => {
 };
 
 export const CoffeeRing = ({ className = '' }) => (
-  <svg className={`absolute pointer-events-none opacity-20 mix-blend-multiply ${className}`} width="150" height="150" viewBox="0 0 200 200" fill="none" stroke="#5D4037" strokeLinecap="round">
+  <svg className={`absolute pointer-events-none opacity-20 mix-blend-multiply ${className}`} width="150" height="150" viewBox="0 0 200 200" fill="none" stroke="#7A3350" strokeLinecap="round">
     <circle cx="100" cy="100" r="80" strokeWidth="6" opacity="0.8" />
     <circle cx="104" cy="98" r="80" strokeWidth="3" opacity="0.4" />
     <path d="M20 100 A80 80 0 0 1 180 100" strokeWidth="10" opacity="0.3" filter="blur(2px)" />
-    <circle cx="40" cy="160" r="4" fill="#5D4037" />
-    <circle cx="160" cy="150" r="2" fill="#5D4037" />
+    <circle cx="40" cy="160" r="4" fill="#7A3350" />
+    <circle cx="160" cy="150" r="2" fill="#7A3350" />
   </svg>
 );
 

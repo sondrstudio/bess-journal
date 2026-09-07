@@ -3,22 +3,37 @@
 @tailwind utilities;
 
 @layer base {
+  /* Pink palette. Every surface and every ink is a token so the two always
+     flip together: a card can never end up light-on-light in dark mode, which
+     is what happened when surfaces were hardcoded and only the text inverted.
+
+     Roles:
+       background  the paper the page sits on
+       surface     a raised card on that paper
+       surface-2   an inset panel within a card
+       ink         body text and line work
+       accent      the pink that carries emphasis
+       primary     text placed ON accent, so it inverts against it  */
   :root {
-    --color-primary: 232, 228, 221;
-    --color-accent: 183, 65, 14;
-    --color-background: 245, 243, 238;
-    --color-ink: 61, 40, 23; 
+    --color-primary: 255, 251, 253;
+    --color-accent: 194, 24, 91;
+    --color-background: 247, 237, 241;
+    --color-surface: 253, 247, 249;
+    --color-surface-2: 240, 222, 230;
+    --color-ink: 69, 24, 44;
   }
-  
+
   .dark {
-    --color-primary: 61, 40, 23;
-    --color-background: 26, 20, 18;
-    --color-ink: 248, 245, 240;
-    --color-accent: 183, 65, 14;
+    --color-primary: 42, 15, 26;
+    --color-accent: 255, 143, 184;
+    --color-background: 26, 14, 20;
+    --color-surface: 42, 22, 32;
+    --color-surface-2: 58, 30, 43;
+    --color-ink: 251, 234, 241;
   }
 
   body {
-    @apply bg-background text-ink font-body selection:bg-accent selection:text-white antialiased transition-colors duration-700 ease-in-out;
+    @apply bg-background text-ink font-body selection:bg-accent selection:text-primary antialiased transition-colors duration-700 ease-in-out;
   }
 }
 

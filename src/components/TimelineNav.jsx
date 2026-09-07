@@ -21,12 +21,12 @@ export function TimelineNav() {
 
   return (
     <nav className="w-full max-w-3xl mx-auto px-4 mb-6">
-      <div className="bg-[#FAF8F5]/90 dark:bg-[#201914]/90 backdrop-blur-md border border-ink/15 dark:border-white/15 rounded-full shadow-lg p-2 flex items-center justify-between gap-2">
+      <div className="bg-surface/90 backdrop-blur-md border border-ink/15 rounded-full shadow-lg p-2 flex items-center justify-between gap-2">
         {/* Previous Button */}
         <button
           onClick={handlePrev}
           disabled={currentIndex <= 0}
-          className="p-2 rounded-full hover:bg-ink/10 dark:hover:bg-white/10 disabled:opacity-30 disabled:pointer-events-none transition-colors text-ink dark:text-white"
+          className="p-2 rounded-full hover:bg-ink/10 disabled:opacity-30 disabled:pointer-events-none transition-colors text-ink"
           title="Previous Entry"
           aria-label="Previous Entry"
         >
@@ -47,13 +47,13 @@ export function TimelineNav() {
                   isSelected
                     ? 'bg-ink text-background shadow-md scale-105 font-bold'
                     : isUnlocked
-                    ? 'bg-ink/5 dark:bg-white/10 text-ink dark:text-white hover:bg-accent/10'
-                    : 'bg-ink/5 dark:bg-white/5 text-ink/40 dark:text-white/40 hover:bg-ink/10'
+                    ? 'bg-ink/5 text-ink hover:bg-accent/10'
+                    : 'bg-ink/5 text-ink/40 hover:bg-ink/10'
                 }`}
               >
                 <span>Day {entry.id}</span>
                 {isUnlocked ? (
-                  <CheckCircle2 className={`w-3.5 h-3.5 ${isSelected ? 'text-accent' : 'text-emerald-600 dark:text-emerald-400'}`} />
+                  <CheckCircle2 className={`w-3.5 h-3.5 ${isSelected ? 'text-accent' : 'text-rose-600 dark:text-rose-400'}`} />
                 ) : (
                   <Lock className="w-3.5 h-3.5 opacity-60" />
                 )}
@@ -66,7 +66,7 @@ export function TimelineNav() {
         <button
           onClick={handleNext}
           disabled={currentIndex >= entries.length - 1}
-          className="p-2 rounded-full hover:bg-ink/10 dark:hover:bg-white/10 disabled:opacity-30 disabled:pointer-events-none transition-colors text-ink dark:text-white"
+          className="p-2 rounded-full hover:bg-ink/10 disabled:opacity-30 disabled:pointer-events-none transition-colors text-ink"
           title="Next Entry"
           aria-label="Next Entry"
         >

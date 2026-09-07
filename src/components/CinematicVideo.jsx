@@ -131,7 +131,7 @@ export function CinematicVideo({ src, poster, aspectRatio = "16/9", objectFit = 
           {/* Huge Center Play Indication */}
           {!isPlaying && (
             <div className="absolute inset-0 flex items-center justify-center bg-ink/30 z-10">
-              <div className="text-white p-8 border-4 border-white border-dashed bg-ink/40" style={{ borderRadius: '255px 15px 225px 15px/15px 225px 15px 255px' }}>
+              <div className="text-primary p-8 border-4 border-ink border-dashed bg-ink/40" style={{ borderRadius: '255px 15px 225px 15px/15px 225px 15px 255px' }}>
                  <DrawnPlay />
               </div>
             </div>

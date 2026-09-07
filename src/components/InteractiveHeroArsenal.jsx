@@ -125,9 +125,9 @@ const PluckableStrings = ({ className = '' }) => {
       onMouseLeave={resetStrings}
       width="100" height="600" viewBox="0 0 100 600"
     >
-      <path d="M 20 0 Q 20 150 20 600" fill="none" stroke="#3D2817" strokeWidth="1" strokeLinecap="round" />
-      <path d="M 40 0 Q 40 150 40 600" fill="none" stroke="#3D2817" strokeWidth="2" strokeLinecap="round" />
-      <path d="M 60 0 Q 60 150 60 600" fill="none" stroke="#3D2817" strokeWidth="1" strokeDasharray="4 4" strokeLinecap="round" />
+      <path d="M 20 0 Q 20 150 20 600" fill="none" stroke="#45182C" strokeWidth="1" strokeLinecap="round" />
+      <path d="M 40 0 Q 40 150 40 600" fill="none" stroke="#45182C" strokeWidth="2" strokeLinecap="round" />
+      <path d="M 60 0 Q 60 150 60 600" fill="none" stroke="#45182C" strokeWidth="1" strokeDasharray="4 4" strokeLinecap="round" />
     </svg>
   );
 };
@@ -167,21 +167,21 @@ const ThemeToggleSwitch = ({ isUnlocked }) => {
         </svg>
       </div>
 
-      <svg width="200" height="200" viewBox="0 0 200 200" fill="none" stroke="#5D4037" strokeLinecap="round" className="relative z-10 hover:scale-105 transition-transform duration-300">
+      <svg width="200" height="200" viewBox="0 0 200 200" fill="none" stroke="#7A3350" strokeLinecap="round" className="relative z-10 hover:scale-105 transition-transform duration-300">
         <circle cx="100" cy="100" r="80" strokeWidth="6" opacity="0.8" />
         <circle cx="104" cy="98" r="80" strokeWidth="3" opacity="0.4" />
         <path d="M20 100 A80 80 0 0 1 180 100" strokeWidth="10" opacity="0.3" filter="blur(2px)" />
         <circle 
            cx="100" cy="100" r="76" 
-           className="transition-all duration-700 ease-in-out fill-[#5D4037]" 
+           className="transition-all duration-700 ease-in-out fill-ink" 
            style={{ opacity: isDark ? 0.95 : 0, filter: isDark ? 'blur(0px)' : 'blur(8px) contrast(150%)' }} 
         />
         <text 
            x="100" y="105" 
            fontSize="32" 
            textAnchor="middle" 
-           fill={isDark ? "#f8f5f0" : "#3D2817"}
-           stroke={isDark ? "#f8f5f0" : "#3D2817"}
+           fill={isDark ? "#FDF7F9" : "#45182C"}
+           stroke={isDark ? "#FDF7F9" : "#45182C"}
            strokeWidth="1.5"
            className="font-handwritten pointer-events-none transition-colors duration-700 drop-shadow-lg"
            style={{ opacity: 1 }}

@@ -17,61 +17,63 @@ import {
 } from 'lucide-react';
 
 const CARD_THEMES = [
+  // These render into a downloaded image, so every value is fixed rather than
+  // a theme token: the card must look the same whichever mode the site is in.
   {
-    id: 'parchment',
-    name: 'Warm Parchment',
-    bg: 'bg-[#FAF8F5]',
-    border: 'border-[#B7410E]/30',
-    headerBg: 'bg-[#B7410E]/10',
-    headerText: 'text-[#B7410E]',
-    titleColor: 'text-[#3D2817]',
-    textColor: 'text-[#3D2817]/90',
-    btnTextColor: 'text-[#3D2817] dark:text-[#3D2817]',
-    vineColor: '#3D2817',
-    footerBg: 'bg-[#E8E4DD]/50',
-    hexBg: '#FAF8F5',
+    id: 'blush',
+    name: 'Blush Paper',
+    bg: 'bg-[#FDF7F9]',
+    border: 'border-[#C2185B]/30',
+    headerBg: 'bg-[#C2185B]/10',
+    headerText: 'text-[#C2185B]',
+    titleColor: 'text-[#45182C]',
+    textColor: 'text-[#45182C]/90',
+    btnTextColor: 'text-[#45182C]',
+    vineColor: '#45182C',
+    footerBg: 'bg-[#F0DEE6]/50',
+    hexBg: '#FDF7F9',
   },
   {
     id: 'rose',
     name: 'Rose Petal',
-    bg: 'bg-[#FFF5F5]',
+    bg: 'bg-[#FFF0F5]',
     border: 'border-[#E11D48]/30',
     headerBg: 'bg-[#E11D48]/10',
     headerText: 'text-[#E11D48]',
     titleColor: 'text-[#881337]',
     textColor: 'text-[#881337]/90',
-    btnTextColor: 'text-[#881337] dark:text-[#881337]',
+    btnTextColor: 'text-[#881337]',
     vineColor: '#881337',
-    footerBg: 'bg-[#FFE4E6]/50',
-    hexBg: '#FFF5F5',
+    footerBg: 'bg-[#FFE4EF]/50',
+    hexBg: '#FFF0F5',
   },
   {
     id: 'midnight',
-    name: 'Midnight Ink',
-    bg: 'bg-[#1C1714]',
-    border: 'border-[#D4AF37]/40',
-    headerBg: 'bg-[#D4AF37]/15',
-    headerText: 'text-[#D4AF37]',
-    titleColor: 'text-[#F5F3EE]',
-    textColor: 'text-[#F5F3EE]/90',
-    btnTextColor: 'text-[#F5F3EE] dark:text-[#F5F3EE]',
-    vineColor: '#D4AF37',
-    footerBg: 'bg-[#2A2420]',
-    hexBg: '#1C1714',
+    name: 'Midnight Rose',
+    bg: 'bg-[#1A0E14]',
+    border: 'border-[#E0A3BC]/40',
+    headerBg: 'bg-[#E0A3BC]/15',
+    headerText: 'text-[#E0A3BC]',
+    titleColor: 'text-[#FBEAF1]',
+    textColor: 'text-[#FBEAF1]/90',
+    btnTextColor: 'text-[#FBEAF1]',
+    vineColor: '#E0A3BC',
+    footerBg: 'bg-[#2A1620]',
+    hexBg: '#1A0E14',
   },
   {
-    id: 'sage',
-    name: 'Sage Garden',
-    bg: 'bg-[#F4F7F4]',
-    border: 'border-[#059669]/30',
-    headerBg: 'bg-[#059669]/10',
-    headerText: 'text-[#059669]',
-    titleColor: 'text-[#14532D]',
-    textColor: 'text-[#14532D]/90',
-    btnTextColor: 'text-[#14532D] dark:text-[#14532D]',
-    vineColor: '#14532D',
-    footerBg: 'bg-[#E2EBE2]/60',
-    hexBg: '#F4F7F4',
+    id: 'peony',
+    name: 'Peony',
+    bg: 'bg-[#FCE7F3]',
+    border: 'border-[#DB2777]/30',
+    headerBg: 'bg-[#DB2777]/10',
+    headerText: 'text-[#DB2777]',
+    titleColor: 'text-[#7A1F3D]',
+    textColor: 'text-[#7A1F3D]/90',
+    btnTextColor: 'text-[#7A1F3D]',
+    vineColor: '#7A1F3D',
+    footerBg: 'bg-[#F7D9E6]/60',
+    hexBg: '#FCE7F3',
   },
 ];
 
@@ -102,7 +104,7 @@ export function ShareExportModal({ isOpen, onClose, entry }) {
       particleCount: 40,
       spread: 60,
       origin: { y: 0.7 },
-      colors: ['#B7410E', '#D4AF37', '#FFD700', '#FAF8F5']
+      colors: ['#C2185B', '#E0A3BC', '#FFB3CE', '#FDF7F9']
     });
   };
 
@@ -244,7 +246,7 @@ export function ShareExportModal({ isOpen, onClose, entry }) {
   return (
     <div className="w-full max-w-2xl mx-auto my-6 animate-fade-blur-in relative z-20">
       {/* INLINE ARTBOOK EXPORT STUDIO TRAY (No overlay, embedded directly on page) */}
-      <div className="relative bg-[#FAF8F5]/95 dark:bg-[#201914]/95 p-5 sm:p-7 rounded-[2.5rem] border-2 border-[#8B5A2B]/25 shadow-xl overflow-hidden backdrop-blur-sm">
+      <div className="relative bg-surface/95 p-5 sm:p-7 rounded-[2.5rem] border-2 border-[#9E4A6B]/25 shadow-xl overflow-hidden backdrop-blur-sm">
         
         {/* Header Bar (Fixed at top) */}
         <div className="flex items-center justify-between border-b border-ink/10 pb-3.5 mb-3 shrink-0">
@@ -274,7 +276,7 @@ export function ShareExportModal({ isOpen, onClose, entry }) {
         {/* Toast Alert */}
         {toastMessage && (
           <div className="p-2.5 mb-3 rounded-xl bg-accent text-background font-serif text-xs font-medium flex items-center justify-center gap-2 animate-fade-blur-in shadow-md shrink-0">
-            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+            <Sparkles className="w-3.5 h-3.5 text-rose-300" />
             <span>{toastMessage}</span>
           </div>
         )}
@@ -295,11 +297,11 @@ export function ShareExportModal({ isOpen, onClose, entry }) {
                   className={`px-3 py-2 rounded-full border text-[11px] font-serif font-bold whitespace-nowrap transition-all flex items-center justify-center gap-2 ${
                     selectedTheme.id === theme.id
                       ? `${theme.bg} ${theme.border} ring-2 ring-accent ${theme.btnTextColor} shadow-md scale-102`
-                      : 'bg-white/90 dark:bg-white/10 border-ink/20 text-[#3D2817] dark:text-[#FAF8F5] hover:border-accent/50'
+                      : 'bg-surface/90 border-ink/20 text-ink hover:border-accent/50'
                   }`}
                 >
                   <span 
-                    className="w-2.5 h-2.5 rounded-full border border-black/15 inline-block shrink-0 shadow-inner"
+                    className="w-2.5 h-2.5 rounded-full border border-ink/15 inline-block shrink-0 shadow-inner"
                     style={{ backgroundColor: theme.hexBg }}
                   />
                   <span className="whitespace-nowrap">{theme.name}</span>
@@ -310,7 +312,7 @@ export function ShareExportModal({ isOpen, onClose, entry }) {
 
           {/* PREVIEW CANVAS CONTAINER (Warm paper mount padding) */}
           <div className="my-1">
-            <div className="overflow-y-auto max-h-[46vh] rounded-3xl border border-[#8B5A2B]/15 shadow-inner bg-[#EFE6D5]/40 dark:bg-[#16110E] p-6 sm:p-8 flex items-center justify-center">
+            <div className="overflow-y-auto max-h-[46vh] rounded-3xl border border-[#9E4A6B]/15 shadow-inner bg-[#F7E4EC]/40 p-6 sm:p-8 flex items-center justify-center">
               
               {/* THE EXPORTABLE CARD */}
               <div
@@ -377,7 +379,7 @@ export function ShareExportModal({ isOpen, onClose, entry }) {
                 </div>
 
                 {/* Card Header Tag & Date (Top) */}
-                <div className="flex items-center justify-between border-b border-black/10 dark:border-white/10 pb-3 shrink-0">
+                <div className="flex items-center justify-between border-b border-ink/10 pb-3 shrink-0">
                   <span className={`font-serif text-[11px] uppercase tracking-wider ${selectedTheme.textColor} opacity-60 font-medium`}>
                     {entry.themeTag || `Day 0${entry.id || 1}`}
                   </span>

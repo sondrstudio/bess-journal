@@ -55,7 +55,7 @@ export function ArtbookTexture() {
       {/* Liquid Ink Blurs (Multiplied onto background with hardware accelerated blurs) */}
       <div ref={liquidRef} className="absolute inset-[-10%] w-[120%] h-[120%] z-0 scale-105 will-change-transform">
         <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-accent/30 blur-[80px] rounded-full animate-pulse mix-blend-multiply" style={{ animationDuration: '10s' }} />
-        <div className="absolute bottom-0 right-[-10%] w-[60vw] h-[60vw] bg-yellow-800/25 blur-[90px] rounded-[40%] animate-spin-slow mix-blend-multiply" />
+        <div className="absolute bottom-0 right-[-10%] w-[60vw] h-[60vw] bg-rose-800/25 blur-[90px] rounded-[40%] animate-spin-slow mix-blend-multiply" />
         <div className="absolute top-[30%] left-[20%] w-[45vw] h-[45vw] bg-ink/20 blur-[100px] rounded-full animate-pulse mix-blend-multiply" style={{ animationDuration: '18s', animationDelay: '2s' }} />
       </div>
 

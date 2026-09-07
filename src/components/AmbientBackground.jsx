@@ -55,7 +55,7 @@ export function AmbientBackground() {
       />
       {/* Animated Light Leaks */}
       <div className="absolute top-0 right-0 w-[45vw] h-[45vw] bg-accent/5 blur-[80px] rounded-full animate-pulse opacity-40 mix-blend-multiply" style={{ animationDuration: '8s' }} />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[55vw] h-[55vw] bg-yellow-500/5 blur-[90px] rounded-full animate-pulse opacity-30 mix-blend-multiply" style={{ animationDuration: '12s' }} />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[55vw] h-[55vw] bg-rose-500/5 blur-[90px] rounded-full animate-pulse opacity-30 mix-blend-multiply" style={{ animationDuration: '12s' }} />
     </div>
   );
 }

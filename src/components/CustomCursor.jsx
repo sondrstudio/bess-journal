@@ -98,7 +98,7 @@ export function CustomCursor() {
     >
       <span 
         id="cursor-label" 
-        className="text-white font-body text-[0.2rem] opacity-0 uppercase tracking-widest whitespace-nowrap pointer-events-none"
+        className="text-primary font-body text-[0.2rem] opacity-0 uppercase tracking-widest whitespace-nowrap pointer-events-none"
       >
         {hoverText}
       </span>
