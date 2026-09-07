@@ -176,12 +176,17 @@ const ThemeToggleSwitch = ({ isUnlocked }) => {
            className="transition-all duration-700 ease-in-out fill-ink" 
            style={{ opacity: isDark ? 0.95 : 0, filter: isDark ? 'blur(0px)' : 'blur(8px) contrast(150%)' }} 
         />
-        <text 
-           x="100" y="105" 
-           fontSize="32" 
-           textAnchor="middle" 
-           fill={isDark ? "#FDF7F9" : "#45182C"}
-           stroke={isDark ? "#FDF7F9" : "#45182C"}
+        {/* Dark in both states, deliberately. The label sits on two different
+            surfaces — the page when the disc is hidden, the disc itself once it
+            fades in — and both of those are light: the disc is fill-ink, which
+            inverts to near-white in dark mode. Flipping the label with the mode
+            put light text on that light disc. */}
+        <text
+           x="100" y="105"
+           fontSize="32"
+           textAnchor="middle"
+           fill="#2A1620"
+           stroke="#2A1620"
            strokeWidth="1.5"
            className="font-handwritten pointer-events-none transition-colors duration-700 drop-shadow-lg"
            style={{ opacity: 1 }}
