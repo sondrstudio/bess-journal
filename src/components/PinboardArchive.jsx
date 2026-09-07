@@ -172,7 +172,7 @@ export function PinboardArchive() {
               <div
                 key={entry.id}
                 onClick={() => setSelectedNoteId(entry.id)}
-                className={`group cursor-pointer relative ${color.bg} ${color.border} border p-6 md:p-8 rounded-2xl ${rotation} hover:rotate-0 hover:scale-105 hover:z-30 transition-all duration-300 shadow-[8px_10px_25px_rgba(40,30,20,0.15)] hover:shadow-[15px_20px_40px_rgba(40,30,20,0.25)] select-none flex flex-col justify-between min-h-[240px]`}
+                className={`group cursor-pointer relative ${color.bg} ${color.border} border p-6 md:p-8 rounded-2xl ${rotation} hover:rotate-0 hover:scale-105 hover:z-30 transition-all duration-300 shadow-[8px_10px_25px_rgba(42,22,32,0.15)] hover:shadow-[15px_20px_40px_rgba(42,22,32,0.25)] select-none flex flex-col justify-between min-h-[240px]`}
               >
                 {/* Washi Tape or Push Pin Accent */}
                 {index % 2 === 0 ? (
@@ -343,7 +343,7 @@ export function PinboardArchive() {
                     value={reactionText}
                     onChange={(e) => setReactionText(e.target.value)}
                     rows={2}
-                    className="w-full bg-transparent border-b border-ink/20 focus:border-accent font-handwritten text-2xl md:text-3xl text-ink leading-relaxed focus:outline-none resize-none placeholder:text-ink/30 dark:placeholder:text-primary/30 placeholder:font-handwritten"
+                    className="w-full bg-transparent border-b border-ink/20 focus:border-accent font-handwritten text-2xl md:text-3xl text-ink leading-relaxed focus:outline-none resize-none placeholder:text-ink/60 placeholder:font-handwritten"
                     placeholder="Leave a whisper or reaction for this memory..."
                     autoFocus={isEditingReaction}
                   />

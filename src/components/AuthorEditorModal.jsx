@@ -228,7 +228,7 @@ export function AuthorEditorModal() {
                 placeholder="Enter passcode..."
                 value={passcode}
                 onChange={(e) => setPasscode(e.target.value)}
-                className="w-full px-5 py-3 rounded-full bg-surface border border-ink/20 text-center font-mono text-lg focus:outline-none focus:border-accent"
+                className="w-full px-5 py-3 rounded-full bg-surface border border-ink/20 text-center font-mono text-lg focus:outline-none focus:border-accent placeholder:text-ink/60"
                 autoFocus
               />
               {passError && <p className="text-xs text-rose-600 font-serif">Incorrect passcode. Try '1234' or 'love'.</p>}

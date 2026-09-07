@@ -107,7 +107,7 @@ export function CinematicVideo({ src, poster, aspectRatio = "16/9", objectFit = 
       {/* 35mm Film Strip Frame (1900s Analog) */}
       <div 
         ref={containerRef}
-        className="relative w-full flex bg-primary border-[3px] border-ink p-2 rotate-[1deg] shadow-[10px_10px_0px_rgba(61,40,23,0.3)] transition-transform duration-500 hover:rotate-[-0.5deg]"
+        className="relative w-full flex bg-primary border-[3px] border-ink p-2 rotate-[1deg] shadow-[10px_10px_0px_rgba(69,24,44,0.3)] transition-transform duration-500 hover:rotate-[-0.5deg]"
         style={{ borderRadius: '2px', aspectRatio }}
       >
         {/* Left Sprockets */}

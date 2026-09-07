@@ -240,7 +240,7 @@ export function ActiveNoteCard({ entry }) {
                   value={reactionText}
                   onChange={(e) => setReactionText(e.target.value)}
                   rows={2}
-                  className="w-full bg-transparent border-b border-ink/20 focus:border-accent font-handwritten text-2xl md:text-3xl text-ink leading-relaxed focus:outline-none resize-none placeholder:text-ink/25 placeholder:font-handwritten"
+                  className="w-full bg-transparent border-b border-ink/20 focus:border-accent font-handwritten text-2xl md:text-3xl text-ink leading-relaxed focus:outline-none resize-none placeholder:text-ink/60 placeholder:font-handwritten"
                   placeholder="a reaction maybe?"
                 />
 
