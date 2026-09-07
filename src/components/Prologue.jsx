@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { InkButterfly } from './HandDrawnElements';
 
@@ -169,10 +169,19 @@ export function Prologue({ onComplete }) {
   }, []);
 
   // Reveal the current stanza, line by line.
-  useEffect(() => {
+  //
+  // Deliberately a layout effect: a plain effect runs after the browser has
+  // painted, so the freshly mounted lines would flash at full opacity for a
+  // frame before being animated from zero. This also restores the container,
+  // which the outgoing tween leaves faded — doing that here rather than in the
+  // tween's callback means it happens once the new lines are already in place,
+  // instead of briefly revealing the outgoing ones.
+  useLayoutEffect(() => {
     if (!stanzaRef.current) return;
     const reduced = prefersReducedMotion();
     setHintVisible(false);
+
+    gsap.set(stanzaRef.current, { opacity: 1, filter: 'blur(0px)', y: 0, scale: 1 });
 
     const ctx = gsap.context(() => {
       const lines = gsap.utils.toArray('.prologue-line');
@@ -245,7 +254,6 @@ export function Prologue({ onComplete }) {
       duration: reduced ? 0.25 : 1.0,
       ease: 'power2.inOut',
       onComplete: () => {
-        gsap.set(stanzaRef.current, { filter: 'blur(0px)', y: 0, opacity: 1 });
         setIndex(current + 1);
         busyRef.current = false;
       },
@@ -317,6 +325,7 @@ export function Prologue({ onComplete }) {
         {stanza.lines.map((line, i) => (
           <p
             key={`${index}-${i}`}
+            style={{ opacity: 0 }}
             className={
               stanza.emphasis
                 ? 'prologue-line font-handwritten text-accent text-4xl md:text-6xl leading-[1.35] py-2'
