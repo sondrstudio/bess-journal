@@ -118,7 +118,7 @@ function PrologueButterflies({ surge, containerRef }) {
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [containerRef]);
 
   return (
     <div
