@@ -19,10 +19,15 @@ import { StartGate } from './components/StartGate';
 
 const PROLOGUE_UNTIL_KEY = 'bess_prologue_until';
 
-// The letter keeps playing on every visit until noon the day after she first
-// opens it, rather than only on a first view. The deadline is stamped once, on
-// that first view, and never refreshed — otherwise each visit would push it
-// forward and the letter would never stand down.
+// The letter has done its job — it greeted her at the start. It no longer
+// opens on load; the "the letter" control replays it whenever she wants it.
+// Set this back to true to have it greet a first-time visitor again, which is
+// what a new device or a cleared browser would count as.
+const PROLOGUE_AUTO_OPEN = false;
+
+// Kept intact behind that switch: while the letter was opening itself, it did
+// so on every visit until noon the day after the first, with the deadline
+// stamped once and never refreshed so repeat visits could not push it forward.
 function prologueDeadline(from = new Date()) {
   const d = new Date(from);
   d.setDate(d.getDate() + 1);
@@ -31,6 +36,7 @@ function prologueDeadline(from = new Date()) {
 }
 
 function prologueStillDue() {
+  if (!PROLOGUE_AUTO_OPEN) return false;
   try {
     const raw = localStorage.getItem(PROLOGUE_UNTIL_KEY);
     if (!raw) return true;
