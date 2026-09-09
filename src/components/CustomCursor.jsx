@@ -94,7 +94,7 @@ export function CustomCursor() {
   return (
     <div 
       id="custom-cursor" 
-      className="fixed top-0 left-0 w-4 h-4 bg-accent rounded-full pointer-events-none z-[9999] flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 will-change-transform"
+      className="fixed top-0 left-0 w-4 h-4 bg-accent rounded-full pointer-events-none z-[100000] flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 will-change-transform"
     >
       <span 
         id="cursor-label" 
